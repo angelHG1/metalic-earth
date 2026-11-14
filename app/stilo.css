@@ -1,8 +1,3 @@
-.div-ejemplo
-{
-
-}
-
 header
 {
     background-color: #07173f;
@@ -11,6 +6,7 @@ header
     align-items: center;
     justify-content: space-between;
     padding-right: 60px;
+    margin-top: 0px;
 }
 header h1
 {
@@ -41,12 +37,48 @@ background-color: #0960E1;
 body
 {
      font-family:'Segoe UI', Tahoma;
-    background-color: #0b0b0b;
+    background-image: url(imagenes/fondoEstrellas.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 
 model-viewer
 {
-    width: 100%;
-    height: 100vh;
-    background-color: #0b0b0b;
+    position: fixed;
+    justify-items: right;
+    margin-left: 21.5%;
+    width: 80%;
+    height: 85vh;
+    
+}
+
+.contenedor
+{
+    display: flex;
+    
+}
+
+.lista
+{
+    background-color: #07173f;
+    color:#FFFFFF;  
+    width: 20%;
+    padding-top: 12px;
+    height: 85vh;
+    padding: 15px;
+    background-color: #07173f42
+}
+
+.lista nav li
+{
+    color: #FFFFFF;
+    list-style: none;
+    padding: 4px;
+    margin-left: 10px;
+}
+.lista nav li a
+{
+    color: #FFFFFF;
+    text-decoration: none;
 }
