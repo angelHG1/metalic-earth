@@ -37,10 +37,23 @@ background-color: #0960E1;
 body
 {
      font-family:'Segoe UI', Tahoma;
-    background-image: url(imagenes/fondoEstrellas.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+   margin: 0;
 }
+
+#video-fondo
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+
+
 
 
 model-viewer
