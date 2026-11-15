@@ -180,6 +180,17 @@ header nav a:hover {
     border-color: #0960E1;
 }
 
+/* Área de interacción del planeta */
+.area-planeta {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    border-radius: 50%;
+    overflow: hidden;
+   
+}
+
+
 /*model viewer*/
 
 .visualizacion {
