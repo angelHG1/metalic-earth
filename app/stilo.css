@@ -45,7 +45,7 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    background-color: rgba(7, 23, 63, 0.55);
+    background-color: rgba(7, 23, 63, 0.141);
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 
     backdrop-filter: blur(8px);
@@ -96,7 +96,7 @@ header nav a:hover {
     height: 100%;
     padding: 25px 18px;
     color: #FFFFFF;
-    background-color: rgba(7, 23, 63, 0.60);
+    background-color: rgba(7, 23, 63, 0.141);
     border-right: 1px solid rgba(150, 180, 230, 0.18);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -130,7 +130,7 @@ header nav a:hover {
     text-decoration: none;
     font-size: 15px;
 
-    background-color: rgba(7, 23, 63, 0.45);
+    background-color: rgba(7, 23, 63, 0.30);
     border: 1px solid rgba(150, 180, 230, 0.14);
     border-radius: 8px;
 
