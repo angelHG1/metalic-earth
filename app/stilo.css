@@ -184,12 +184,12 @@ header nav a:hover {
 
 /* Área de interacción del planeta */
 .area-planeta {
-    width: 600px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
     display: flex;
-    border-radius: 50%;
-    overflow: hidden;
-   
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 
@@ -215,7 +215,11 @@ model-viewer {
 
     background-color: transparent;
     --poster-color: transparent;
-    cursor: default;
+    cursor: grab;
+}
+
+model-viewer:active {
+    cursor: grabbing;
 }
 
 /*barra de desplazamiento*/
@@ -241,6 +245,7 @@ model-viewer {
     align-items: center;
     cursor: pointer;
     pointer-events: auto;
+    touch-action: pan-x pan-y;
     user-select: none;
     transition: opacity 0.25s ease;
     z-index: 10;
