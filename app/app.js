@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const panelAgencia = document.getElementById('panel-agencia');
     const panelLanzamiento = document.getElementById('panel-lanzamiento');
     const panelProposito = document.getElementById('panel-proposito');
+    const panelLink = document.getElementById('panel-link');
 
     // Configuración de los 10 satélites con parámetros orbitales y telemetría bilingüe
     const SATELITES = [
@@ -49,7 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Diseñado para probar la viabilidad de obtener y utilizar imágenes de televisión de cobertura nubosa desde satélites.',
             propositoEn: 'Designed to test the feasibility of obtaining and using television cloud cover images from satellites.',
             descripcion: 'Primer satélite meteorológico exitoso de la historia. Operó por televisión e infrarrojos para la observación de sistemas climáticos.',
-            descripcionEn: 'First successful weather satellite in history. Operated television and infrared cameras for observing weather systems.'
+            descripcionEn: 'First successful weather satellite in history. Operated television and infrared cameras for observing weather systems.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1960-002B'
         },
         {
             id: 2,
@@ -74,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Satélite de comunicaciones en órbita geosíncrona.',
             propositoEn: 'Geosynchronous communications satellite.',
             descripcion: 'Su misión era servir como la primera prueba de un satélite de comunicaciones en órbita geosíncrona terrestre.',
-            descripcionEn: 'Its mission was to serve as the pioneer test of an active communications satellite in geosynchronous orbit.'
+            descripcionEn: 'Its mission was to serve as the pioneer test of an active communications satellite in geosynchronous orbit.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1963-004A' 
         },
         {
             id: 3,
@@ -99,7 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Geodesia y mapeo topográfico',
             propositoEn: 'Geodesy and topographic mapping',
             descripcion: 'Mision ciencias de la tierra y fisica espcial. Su funcion fue servir para pruebas de nuevos conceptos en el diseño y propulsion de naves espaciales, y estabilizacion, recoger imagenes de alta calidad de la cobertura nubosa y retrasmitir datos meteorologicos mediante un satelite sincronico a la tierra,  realizar mediciones del entorno  aeroespacial y probar sistemas de comunicacion mejorados',
-            descripcionEn: 'Earth science and space physics mission. Its function was to serve for testing new concepts in spacecraft design and propulsion, stabilization, collect high-quality images of cloud cover and retransmit meteorological data via a synchronous satellite to Earth, perform measurements of the aerospace environment, and test improved communication systems.'
+            descripcionEn: 'Earth science and space physics mission. Its function was to serve for testing new concepts in spacecraft design and propulsion, stabilization, collect high-quality images of cloud cover and retransmit meteorological data via a synchronous satellite to Earth, perform measurements of the aerospace environment, and test improved communication systems.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1966-110A' 
         },
         {
             id: 4,
@@ -124,7 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Telecomunicaciones y retransmisión de datos orbitales.',
             propositoEn: 'Telecommunications and orbital data relay.',
             descripcion: 'Plataforma experimental de enlaces inter-satelitales y transmisión de telemetría científica en banda alta.',
-            descripcionEn: 'Experimental platform for inter-satellite crosslinks and high-band scientific telemetry transmission.'
+            descripcionEn: 'Experimental platform for inter-satellite crosslinks and high-band scientific telemetry transmission.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-058A'
         },
         {
             id: 5,
@@ -149,7 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Estudio de radiación solar y clima espacial.',
             propositoEn: 'Solar radiation and space weather research.',
             descripcion: 'Monitoreo de vientos solares, partículas cargadas y perturbaciones geomagnéticas en la magnetosfera terrestre.',
-            descripcionEn: 'Monitoring solar winds, charged particles, and geomagnetic storms across Earth magnetosphere.'
+            descripcionEn: 'Monitoring solar winds, charged particles, and geomagnetic storms across Earth magnetosphere.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1983-026B' 
         },
         {
             id: 6,
@@ -173,7 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Telescopio espacial ultravioleta',
             propositoEn: 'Ultraviolet space telescope',
             descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.',
-            descripcionEn: 'Space allocated for the technical description and scientific information originated from NASA corresponding to this satellite.'
+            descripcionEn: 'Space allocated for the technical description and scientific information originated from NASA corresponding to this satellite.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-017A'
         },
         {
             id: 7,
@@ -197,7 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Satelite explorer',
             propositoEn: 'Explorer satellite',
             descripcion: 'Su mision era investigar la fisica del plasma de los fenomenos aurorales con una resolucion temporal y espacial extremadamente alta, empleando un conjuto completo de instrumentos para medir particulas.',
-            descripcionEn: 'Its mission was to investigate the physics of auroral phenomena plasma with extremely high temporal and spatial resolution, employing a complete set of instruments to measure particles.'
+            descripcionEn: 'Its mission was to investigate the physics of auroral phenomena plasma with extremely high temporal and spatial resolution, employing a complete set of instruments to measure particles.',
+            link: ' https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1996-049A' 
         },
         {
             id: 8,
@@ -222,7 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Satelite de investigacion y desarrollo meteorologico .',
             propositoEn: 'Meteorological research and development satellite.',
             descripcion: 'Su mision fue servir de plataforma estabilizada y orientada hacia la tierra, destinada a probar sistemas avanzados de sensores meteorologicos y a recopilar datos meteorologicos.',
-            descripcionEn: 'Its mission was to serve as a stabilized and Earth-oriented platform, designed to test advanced meteorological sensor systems and collect meteorological data.'
+            descripcionEn: 'Its mission was to serve as a stabilized and Earth-oriented platform, designed to test advanced meteorological sensor systems and collect meteorological data.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-037A'
         },
         {
             id: 9,
@@ -247,7 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Sistemas de radionavegación y sincronización.',
             propositoEn: 'Radionavigation and atomic timing systems.',
             descripcion: 'Su mision era medir los vientos oceanicos y sus direcciones mediante laobservacion de las pequeñas ondas generadas por el viento.',
-            descripcionEn: 'Its mission was to measure oceanic winds and their directions through the observation of small waves generated by the wind.'
+            descripcionEn: 'Its mission was to measure oceanic winds and their directions through the observation of small waves generated by the wind.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1999-034A' 
         },
         {
             id: 10,
@@ -272,7 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
             proposito: 'Investigación en microgravedad y física de materiales.',
             propositoEn: 'Microgravity research and materials physics.',
             descripcion: 'Laboratorio orbital para experimentos de cristalización de proteínas y solidificación de aleaciones en caída libre.',
-            descripcionEn: 'Orbital lab for protein crystal growth experiments and metallic alloy solidification in freefall.'
+            descripcionEn: 'Orbital lab for protein crystal growth experiments and metallic alloy solidification in freefall.',
+            link: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2000-075A' 
         }
     ];
 
@@ -493,14 +504,29 @@ document.addEventListener('DOMContentLoaded', () => {
         panelTitulo.textContent = esIngles && sat.nombreEn ? sat.nombreEn : sat.nombre;
         panelImagen.src = sat.imagen ? `imagenes/${sat.imagen}` : 'imagenes/default.jpg';
         panelEstado.textContent = esIngles && sat.estadoEn ? sat.estadoEn : sat.estado;
-        panelAltitud.textContent = sat.altitud;
-        panelVelocidad.textContent = sat.velocidadKm;
+
         panelInclinacion.textContent = sat.inclinacionGrad;
         panelPeriodo.textContent = sat.periodo;
         panelDescripcion.textContent = esIngles && sat.descripcionEn ? sat.descripcionEn : sat.descripcion;
         panelAgencia.textContent = esIngles && sat.agenciaEn ? sat.agenciaEn : sat.agencia;
         panelLanzamiento.textContent = esIngles && sat.lanzamientoEn ? sat.lanzamientoEn : sat.lanzamiento;
         panelProposito.textContent = esIngles && sat.propositoEn ? sat.propositoEn : sat.proposito;
+
+        // Actualizar link de más información
+        if (panelLink) {
+            const url = sat.link || sat.Link || '';
+            panelLink.href = url || '#';
+            if (url) {
+                panelLink.target = '_blank';
+                panelLink.rel = 'noopener noreferrer';
+                panelLink.style.pointerEvents = 'auto';
+                panelLink.style.opacity = '1';
+            } else {
+                panelLink.removeAttribute('target');
+                panelLink.style.pointerEvents = 'none';
+                panelLink.style.opacity = '0.5';
+            }
+        }
 
         // Mostrar panel lateral
         panelLateral.classList.add('abierto');

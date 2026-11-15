@@ -606,6 +606,18 @@ model-viewer:active {
     color: #00f0ff;
     text-align: right;
 }
+
+.panel-detalles-lista li a {
+    color: #00f0ff;
+    text-align: right;
+    text-decoration: underline;
+    font-size: 13px;
+    transition: color 0.2s ease;
+}
+
+.panel-detalles-lista li a:hover {
+    color: #ffffff;
+}
 /* Pagina acerca de*/
 .Quees
 {
