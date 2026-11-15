@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '51.6°',
             periodo: '92.9 min',
             estado: 'En órbita, no operacional',
-            estadoEn: 'In active orbit',
+            estadoEn: 'In orbit, non-operational',
             agencia: 'NASA- Oficina de aplicaciones de ciencias espaciales / Estados Unidos',
             agenciaEn: 'NASA / United States',
             lanzamiento: '1 de abril 1960',
@@ -65,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '97.4°',
             periodo: '95.6 min',
             estado: 'En órbita activa',
-            agencia: 'NASA / Estados Unidos',
+            estadoEn: 'In orbit, non-operational',
+            agencia: 'NASA- oficina de aplicaciones espaciales / Estados Unidos',
+            agenciaEn: 'NASA / United States',
             lanzamiento: '14 de febrero 1963',
             lanzamientoEn: 'February 14, 1963',
             proposito: 'Satélite de comunicaciones en órbita geosíncrona.',
@@ -88,16 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '98.2°',
             periodo: '98.8 min',
             estado: 'En órbita, no operacional',
-            estadoEn: 'In active orbit',
+            estadoEn: 'In orbit, non-operational',
             agencia: 'NASA- Oficina de aplicaciones de ciencias espaciales / Estados Unidos',
-            agenciaEn: 'NASA / EEUU',
+            agenciaEn: 'NASA / United States',
             lanzamiento: '7 de diciembre 1966',
+            lanzamientoEn: 'December 7, 1966',
             proposito: 'Geodesia y mapeo topográfico',
-            descripcion: 'Mision ciencias de la tierra y fisica espcial. Su funcion fue servir para pruebas de nuevos conceptos en el diseño y propulsion de naves espaciales, y estabilizacion, recoger imagenes de alta calidad de la cobertura nubosa y retrasmitir datos meteorologicos mediante un satelite sincronico a la tierra,  realizar mediciones del entorno  aeroespacial y probar sistemas de comunicacion mejorados'
+            propositoEn: 'Geodesy and topographic mapping',
+            descripcion: 'Mision ciencias de la tierra y fisica espcial. Su funcion fue servir para pruebas de nuevos conceptos en el diseño y propulsion de naves espaciales, y estabilizacion, recoger imagenes de alta calidad de la cobertura nubosa y retrasmitir datos meteorologicos mediante un satelite sincronico a la tierra,  realizar mediciones del entorno  aeroespacial y probar sistemas de comunicacion mejorados',
+            descripcionEn: 'Earth science and space physics mission. Its function was to serve for testing new concepts in spacecraft design and propulsion, stabilization, collect high-quality images of cloud cover and retransmit meteorological data via a synchronous satellite to Earth, perform measurements of the aerospace environment, and test improved communication systems.'
         },
         {
             id: 4,
             nombre: 'Landsat 1',
+            nombreEn: 'Landsat 1',
             imagen: 'Landsat 1.jpg',
             radioMult: 1.22,
             inclinacion: -0.40,    // ~-23°
@@ -108,9 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.61 km/s',
             inclinacionGrad: '35.0°',
             periodo: '94.6 min',
-            estado: 'Inactivo / Fuera de servicio',
-            estadoEn: 'Decommissioned / Inactive',
-            agencia: 'NASA / DoD',
+            estado: 'En órbita / no operacional',
+            estadoEn: 'In orbit, non-operational',
+            agencia: 'NASA- Oficina de aplicaciones espaciales y terrestres/ Estados Unidos',
             agenciaEn: 'NASA / DoD',
             lanzamiento: '29 de septiembre 1981',
             lanzamientoEn: 'September 29, 1981',
@@ -123,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 5,
             nombre: 'TDRS-A',
             imagen: 'TDRS-A.jpg',
-            nombreEn: 'Satellite 5',
+            nombreEn: 'TDRS-A',
             radioMult: 1.42,
             inclinacion: 1.25,     // ~72° (casi polar)
             ascension: 2.60,
@@ -146,9 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 6,
-            nombre: 'FAST',
+            nombre: 'Galex',
             imagen: 'FAST.jpg',
-            nombreEn: 'FAST',
+            nombreEn: 'Galex',
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
             ascension: 3.25,
@@ -159,16 +165,20 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '66.0°',
             periodo: '97.3 min',
             estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Oceanografía y recursos hídricos',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            agencia: 'NASA- Oficina de ciencias espaciales/ Estados Unidos',
+            agenciaEn: 'NASA / United States',
+            lanzamiento: '28 de abril del 2003',
+            lanzamientoEn: 'April 28, 2003',
+            proposito: 'Telescopio espacial ultravioleta',
+            propositoEn: 'Ultraviolet space telescope',
+            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.',
+            descripcionEn: 'Space allocated for the technical description and scientific information originated from NASA corresponding to this satellite.'
         },
         {
             id: 7,
-            nombre: 'NIMBUS 3',
+            nombre: 'Fast',
             imagen: 'satelite7.jpg',
-            nombreEn: 'Satellite 7',
+            nombreEn: 'Fast',
             radioMult: 1.46,
             inclinacion: 0.55,     // ~31°
             ascension: 3.90,
@@ -179,15 +189,19 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '53.0°',
             periodo: '103.0 min',
             estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Astrofísica y telescopio orbital',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            agencia: 'NASA- Oficina de ciencias espaciales/ Estados Unidos',
+            agenciaEn: 'NASA- Office of Space Sciences / United States',
+            lanzamiento: '21 de agosto de 1996',
+            lanzamientoEn: 'August 21, 1996',
+            proposito: 'Satelite explorer',
+            propositoEn: 'Explorer satellite',
+            descripcion: 'Su mision era investigar la fisica del plasma de los fenomenos aurorales con una resolucion temporal y espacial extremadamente alta, empleando un conjuto completo de instrumentos para medir particulas.',
+            descripcionEn: 'Its mission was to investigate the physics of auroral phenomena plasma with extremely high temporal and spatial resolution, employing a complete set of instruments to measure particles.'
         },
         {
             id: 8,
-            nombre: 'EO 1',
-            nombreEn: 'Satellite 8',
+            nombre: 'Nimbus 3',
+            nombreEn: 'Nimbus 3',
             radioMult: 1.36,
             inclinacion: -1.20,    // ~-69°
             ascension: 4.55,
@@ -197,21 +211,21 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.48 km/s',
             inclinacionGrad: '74.0°',
             periodo: '99.8 min',
-            estado: 'En órbita activa',
-            estadoEn: 'In active orbit',
-            agencia: 'NASA / JAXA',
-            agenciaEn: 'NASA / JAXA',
+            estado: 'No operacional / en órbita',
+            estadoEn: 'Non-operational / in orbit',
+            agencia: 'NASA- Oficina de ciencias espaciales/ Estados Unidos',
+            agenciaEn: 'NASA- Office of Space Sciences / United States',
             lanzamiento: '12 de septiembre 1991',
             lanzamientoEn: 'September 12, 1991',
-            proposito: 'Composición atmosférica y gases de efecto invernadero.',
-            propositoEn: 'Atmospheric composition and greenhouse gases monitoring.',
-            descripcion: 'Sensor espectrométrico para medir la recuperación de la capa de ozono estratosférico y concentraciones de metano.',
-            descripcionEn: 'Spectrometer sensor measuring stratospheric ozone recovery trends and global methane concentrations.'
+            proposito: 'Satelite de investigacion y desarrollo meteorologico .',
+            propositoEn: 'Meteorological research and development satellite.',
+            descripcion: 'Su mision fue servir de plataforma estabilizada y orientada hacia la tierra, destinada a probar sistemas avanzados de sensores meteorologicos y a recopilar datos meteorologicos.',
+            descripcionEn: 'Its mission was to serve as a stabilized and Earth-oriented platform, designed to test advanced meteorological sensor systems and collect meteorological data.'
         },
         {
             id: 9,
-            nombre: 'Satélite 9',
-            nombreEn: 'Satellite 9',
+            nombre: 'QuikSCAT',
+            nombreEn: 'QuikSCAT',
             radioMult: 1.50,
             inclinacion: 0.20,     // ~11° (casi ecuatorial)
             ascension: 5.20,
@@ -223,20 +237,19 @@ document.addEventListener('DOMContentLoaded', () => {
             periodo: '106.2 min',
             estado: 'Inactivo / Fuera de servicio',
             estadoEn: 'Decommissioned / Inactive',
-            agencia: 'USAF / NASA',
-            agenciaEn: 'USAF / NASA',
-            lanzamiento: '14 de julio 1984',
-            lanzamientoEn: 'July 14, 1984',
+            agencia: 'NASA- Administracion nacional aeronautica y el espacio / Estados Unidos',
+            agenciaEn: 'NASA- National Aeronautics and Space Administration / United States',
+            lanzamiento: '20 de junio del 1999',
+            lanzamientoEn: 'June 20, 1999',
             proposito: 'Sistemas de radionavegación y sincronización.',
             propositoEn: 'Radionavigation and atomic timing systems.',
-            descripcion: 'Unidad precursora en constelaciones de posicionamiento orbital equipada con osciladores atómicos de cesio.',
-            descripcionEn: 'Precursor constellation unit for orbital positioning equipped with high-precision cesium atomic clocks.'
+            descripcion: 'Su mision era medir los vientos oceanicos y sus direcciones mediante laobservacion de las pequeñas ondas generadas por el viento.',
+            descripcionEn: 'Its mission was to measure oceanic winds and their directions through the observation of small waves generated by the wind.'
         },
         {
             id: 10,
-            nombre: 'SEASAT 1',
+            nombre: 'Satélite 10',
             nombreEn: 'Satellite 10',
-            imagen: 'SEASAT 1.jpg',
             radioMult: 1.22,
             inclinacion: 0.85,     // ~49°
             ascension: 5.85,
@@ -511,8 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar los nombres según el idioma activo al cargar
     actualizarNombresSatelites();
-
-    // Aplicar configuración guardada del sistema (rotación, fondo, etiquetas)
+     // Aplicar configuración guardada del sistema (rotación, fondo, etiquetas)
     function aplicarConfiguracionGlobal() {
         
             const raw = localStorage.getItem('metallic_earth_configuracion');
