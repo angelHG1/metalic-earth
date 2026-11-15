@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Elementos del panel lateral
     const panelTitulo = document.getElementById('panel-titulo');
-    const panelImagen = document.getElementById('panel-imagen');
     const panelEstado = document.getElementById('panel-estado');
     const panelAltitud = document.getElementById('panel-altitud');
     const panelVelocidad = document.getElementById('panel-velocidad');
