@@ -36,26 +36,21 @@
         </nav>
     </header>
 
-    <!-- contenido proncipal -->
+    <!-- contenido principal -->
     <main class="contenedor">
 
         <!-- Lista de objetos -->
         <aside class="lista">
             <h2>Lista de objetos</h2>
-            <nav>
-                <li><a href="#" class="seleccionado">Objeto 1</a> </li>
-                <li><a href="#">Objeto 2</a></li>
-                <li><a href="#">Objeto 3</a></li>
-                <li><a href="#">Objeto 4</a></li>
-                <li><a href="#">Objeto 5</a></li>
-                <li><a href="#">Objeto 6</a></li>
+            <nav id="lista-objetos">
+                <!-- Se llena dinámicamente con los 10 satélites -->
             </nav>
-
         </aside>
 
         <!--Model viewer-->
         <section class="visualizacion">
             <model-viewer
+                id="visor-tierra"
                 src="tierra/scene.gltf"
                 alt="Modelo tridimensional de la Tierra"
                 camera-controls
@@ -63,8 +58,107 @@
                 disable-tap
                 shadow-intensity="0.5"
                 exposure="0.4">
+
+                <!-- 10 Satélites orbitales interactivos -->
+                <button class="satelite-hotspot" slot="hotspot-sat-1" data-id="1">
+                    <span class="satelite-etiqueta">Satélite 1</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-2" data-id="2">
+                    <span class="satelite-etiqueta">Satélite 2</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-3" data-id="3">
+                    <span class="satelite-etiqueta">Satélite 3</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-4" data-id="4">
+                    <span class="satelite-etiqueta">Satélite 4</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-5" data-id="5">
+                    <span class="satelite-etiqueta">Satélite 5</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-6" data-id="6">
+                    <span class="satelite-etiqueta">Satélite 6</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-7" data-id="7">
+                    <span class="satelite-etiqueta">Satélite 7</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-8" data-id="8">
+                    <span class="satelite-etiqueta">Satélite 8</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-9" data-id="9">
+                    <span class="satelite-etiqueta">Satélite 9</span>
+                    <span class="satelite-punto"></span>
+                </button>
+                <button class="satelite-hotspot" slot="hotspot-sat-10" data-id="10">
+                    <span class="satelite-etiqueta">Satélite 10</span>
+                    <span class="satelite-punto"></span>
+                </button>
+
             </model-viewer>
         </section>
+
+        <!-- Panel lateral de información emergente -->
+        <aside class="panel-lateral" id="panel-lateral" aria-hidden="true">
+            <div class="panel-header">
+                <div class="panel-tag-box">
+                    <span class="panel-tag">OBJETO ORBITAL</span>
+                    <h2 id="panel-titulo">Satélite 1</h2>
+                </div>
+                <button class="btn-cerrar-panel" id="btn-cerrar-panel" aria-label="Cerrar panel">&times;</button>
+            </div>
+
+            <div class="panel-cuerpo">
+                <div class="panel-estado-card">
+                    <span class="estado-indicador"></span>
+                    <span class="estado-texto" id="panel-estado">En órbita activa</span>
+                </div>
+
+                <div class="panel-seccion">
+                    <h3>Telemetría y Órbita</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Altitud</span>
+                            <span class="info-valor" id="panel-altitud">550 km</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Velocidad</span>
+                            <span class="info-valor" id="panel-velocidad">7.6 km/s</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Inclinación</span>
+                            <span class="info-valor" id="panel-inclinacion">51.6°</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Periodo</span>
+                            <span class="info-valor" id="panel-periodo">95 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-seccion">
+                    <h3>Información Científica</h3>
+                    <p id="panel-descripcion" class="panel-descripcion">
+                        Espacio preparado para la información científica, misión, objetivos e instrumental de este artefacto (datos oficiales de la NASA).
+                    </p>
+                </div>
+
+                <div class="panel-seccion">
+                    <h3>Detalles de la Misión</h3>
+                    <ul class="panel-detalles-lista">
+                        <li><strong>Agencia:</strong> <span id="panel-agencia">Por proporcionar</span></li>
+                        <li><strong>Lanzamiento:</strong> <span id="panel-lanzamiento">Por proporcionar</span></li>
+                        <li><strong>Propósito:</strong> <span id="panel-proposito">Investigación científica y monitoreo</span></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
 
     </main>
 

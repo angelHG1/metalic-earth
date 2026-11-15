@@ -86,6 +86,8 @@ header nav a:hover {
     display: flex;
     width: 100%;
     height: calc(100vh - 76px);
+    position: relative;
+    overflow: hidden;
 }
 
 /* Lista de objetos */
@@ -186,6 +188,7 @@ model-viewer {
 
     background-color: transparent;
     --poster-color: transparent;
+    cursor: default;
 }
 
 /*barra de desplazamiento*/
@@ -197,4 +200,307 @@ model-viewer {
 .lista::-webkit-scrollbar-thumb {
     background-color: rgba(9, 96, 225, 0.65);
     border-radius: 10px;
+}
+
+/* Hotspots de satélites */
+
+.satelite-hotspot {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
+    transition: opacity 0.25s ease;
+    z-index: 10;
+}
+
+/* Oclusión cuando pasa detrás de la Tierra */
+.satelite-hotspot:not([data-visible]) {
+    opacity: 0.22;
+    pointer-events: none;
+    filter: blur(0.5px);
+}
+
+/* Etiqueta con el nombre pequeño arriba */
+.satelite-etiqueta {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #e2f1ff;
+    background-color: rgba(6, 20, 54, 0.88);
+    border: 1px solid rgba(0, 229, 255, 0.65);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.25s ease;
+}
+
+/* Punto indicador del satélite */
+.satelite-punto {
+    position: relative;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #00f0ff;
+    box-shadow: 0 0 8px #00f0ff, 0 0 16px rgba(0, 240, 255, 0.85);
+    transition: all 0.25s ease;
+}
+
+/* Efecto de onda/pulso alrededor del punto */
+.satelite-punto::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(0, 240, 255, 0.7);
+    animation: pulso-satelite 2s infinite ease-out;
+}
+
+@keyframes pulso-satelite {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+/* Hover y estado seleccionado */
+.satelite-hotspot:hover .satelite-etiqueta,
+.satelite-hotspot.seleccionado .satelite-etiqueta {
+    background-color: rgba(9, 96, 225, 0.95);
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.8);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.satelite-hotspot:hover .satelite-punto,
+.satelite-hotspot.seleccionado .satelite-punto {
+    background-color: #ffffff;
+    box-shadow: 0 0 12px #ffffff, 0 0 22px #00f0ff;
+    transform: scale(1.35);
+}
+
+
+.panel-lateral {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 380px;
+    max-width: 90vw;
+    height: 100%;
+    z-index: 100;
+
+    background-color: rgba(5, 17, 48, 0.88);
+    border-left: 1px solid rgba(0, 229, 255, 0.35);
+    box-shadow: -12px 0 35px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    display: flex;
+    flex-direction: column;
+
+    transform: translateX(105%);
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+}
+
+.panel-lateral.abierto {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+/* Cabecera del panel */
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px;
+    border-bottom: 1px solid rgba(150, 180, 230, 0.16);
+}
+
+.panel-tag-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.panel-tag {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    color: #00f0ff;
+    text-transform: uppercase;
+}
+
+.panel-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.btn-cerrar-panel {
+    background: transparent;
+    border: 1px solid rgba(150, 180, 230, 0.25);
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 1;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cerrar-panel:hover {
+    background-color: rgba(9, 96, 225, 0.4);
+    border-color: #00f0ff;
+    color: #00f0ff;
+    transform: scale(1.05);
+}
+
+/* Cuerpo con scroll */
+.panel-cuerpo {
+    flex: 1;
+    overflow-y: auto;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.panel-cuerpo::-webkit-scrollbar {
+    width: 5px;
+}
+
+.panel-cuerpo::-webkit-scrollbar-thumb {
+    background-color: rgba(9, 96, 225, 0.65);
+    border-radius: 10px;
+}
+
+/* Tarjeta de estado */
+.panel-estado-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background-color: rgba(0, 240, 255, 0.08);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 8px;
+}
+
+.estado-indicador {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #00ff88;
+    box-shadow: 0 0 8px #00ff88;
+}
+
+.estado-texto {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e0faff;
+    letter-spacing: 0.3px;
+}
+
+/* Secciones de información */
+.panel-seccion h3 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #8bb3e8;
+    border-left: 3px solid #00f0ff;
+    padding-left: 8px;
+}
+
+/* Rejilla de telemetría */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.info-item {
+    background-color: rgba(7, 23, 63, 0.55);
+    border: 1px solid rgba(150, 180, 230, 0.16);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 11px;
+    color: #9cb5db;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.info-valor {
+    font-size: 16px;
+    font-weight: 700;
+    color: #00f0ff;
+    font-family: 'Consolas', 'Segoe UI', monospace;
+}
+
+/* Descripción */
+.panel-descripcion {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d2e2f6;
+    background-color: rgba(7, 23, 63, 0.45);
+    border: 1px solid rgba(150, 180, 230, 0.14);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+/* Detalles */
+.panel-detalles-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.panel-detalles-lista li {
+    font-size: 13px;
+    color: #c0d4ec;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(150, 180, 230, 0.1);
+}
+
+.panel-detalles-lista li strong {
+    color: #ffffff;
+}
+
+.panel-detalles-lista li span {
+    color: #00f0ff;
+    text-align: right;
 }
