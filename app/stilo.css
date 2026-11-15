@@ -247,54 +247,50 @@ model-viewer:active {
     pointer-events: auto;
     touch-action: pan-x pan-y;
     user-select: none;
-    transition: opacity 0.25s ease;
-    z-index: 10;
+    opacity: 1;
+    z-index: 20;
 }
 
-/* Oclusión cuando pasa detrás de la Tierra */
-.satelite-hotspot:not([data-visible]) {
-    opacity: 0.22;
-    pointer-events: none;
-    filter: blur(0.5px);
-}
-
-/* Etiqueta con el nombre pequeño arriba */
+/* Etiqueta con el nombre pequeño arriba - Alta visibilidad */
 .satelite-etiqueta {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: #e2f1ff;
-    background-color: rgba(6, 20, 54, 0.88);
-    border: 1px solid rgba(0, 229, 255, 0.65);
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
-    border-radius: 4px;
-    padding: 3px 8px;
-    margin-bottom: 6px;
+    color: #ffffff;
+    background-color: rgba(3, 11, 35, 0.95);
+    border: 1.5px solid #00f0ff;
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.6), 0 4px 10px rgba(0, 0, 0, 0.85);
+    text-shadow: 0 0 4px rgba(0, 240, 255, 0.9);
+    border-radius: 5px;
+    padding: 3px 9px;
+    margin-bottom: 7px;
     white-space: nowrap;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    transition: all 0.25s ease;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.2s ease;
 }
 
-/* Punto indicador del satélite */
+/* Punto indicador del satélite - Núcleo luminoso */
 .satelite-punto {
     position: relative;
-    width: 9px;
-    height: 9px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
-    background-color: #00f0ff;
-    box-shadow: 0 0 8px #00f0ff, 0 0 16px rgba(0, 240, 255, 0.85);
-    transition: all 0.25s ease;
+    background-color: #ffffff;
+    border: 2px solid #00f0ff;
+    box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 35px rgba(0, 240, 255, 0.9);
+    transition: all 0.2s ease;
 }
 
 /* Efecto de onda/pulso alrededor del punto */
 .satelite-punto::after {
     content: "";
     position: absolute;
-    inset: -4px;
+    inset: -5px;
     border-radius: 50%;
-    border: 1.5px solid rgba(0, 240, 255, 0.7);
+    border: 2px solid rgba(0, 240, 255, 0.85);
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
     animation: pulso-satelite 2s infinite ease-out;
 }
 
@@ -304,7 +300,7 @@ model-viewer:active {
         opacity: 1;
     }
     100% {
-        transform: scale(2.4);
+        transform: scale(2.8);
         opacity: 0;
     }
 }
@@ -312,18 +308,19 @@ model-viewer:active {
 /* Hover y estado seleccionado */
 .satelite-hotspot:hover .satelite-etiqueta,
 .satelite-hotspot.seleccionado .satelite-etiqueta {
-    background-color: rgba(9, 96, 225, 0.95);
+    background-color: rgba(9, 96, 225, 0.98);
     border-color: #ffffff;
     color: #ffffff;
-    box-shadow: 0 0 14px rgba(0, 240, 255, 0.8);
-    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.95), 0 4px 12px rgba(0, 0, 0, 0.9);
+    transform: translateY(-3px) scale(1.08);
 }
 
 .satelite-hotspot:hover .satelite-punto,
 .satelite-hotspot.seleccionado .satelite-punto {
     background-color: #ffffff;
-    box-shadow: 0 0 12px #ffffff, 0 0 22px #00f0ff;
-    transform: scale(1.35);
+    border-color: #ffffff;
+    box-shadow: 0 0 15px #ffffff, 0 0 30px #00f0ff, 0 0 45px rgba(0, 240, 255, 1);
+    transform: scale(1.4);
 }
 
 
