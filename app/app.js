@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 6,
             nombre: 'GALEX',
-            imagen: 'GALEX.png',
+            imagen: 'GALEX.jpeg',
             nombreEn: 'GALEX',
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
