@@ -20,6 +20,7 @@
 
     function init() {
         cargarConfiguracion();
+        aplicarFondoEnUI();
         enlazarEventos();
     }
 
@@ -101,6 +102,45 @@
     }
 
     /**
+     * Aplica el fondo visual seleccionado en la página actual
+     */
+    function aplicarFondoEnUI() {
+        const fondoTipo = estadoActual.fondoEspacio || 'video';
+        const divFondo = document.querySelector('.fondo');
+
+        if (fondoTipo === 'imagen') {
+            document.body.style.backgroundImage = "url('imagenes/fondoEstrellas.jpg')";
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.backgroundColor = '#030a1e';
+            if (divFondo) divFondo.style.display = 'none';
+        } else if (fondoTipo === 'oscuro') {
+            document.body.style.backgroundImage = 'none';
+            document.body.style.backgroundColor = '#030a1e';
+            if (divFondo) divFondo.style.display = 'none';
+        } else {
+            // 'video' o por defecto
+            document.body.style.backgroundImage = 'none';
+            document.body.style.backgroundColor = '#07173f';
+            if (divFondo) divFondo.style.display = 'block';
+        }
+    }
+
+    /**
+     * Guarda la configuración actual en localStorage de forma silenciosa
+     */
+    function guardarSilencioso() {
+        try {
+            localStorage.setItem(CLAVE_STORAGE_CONFIG, JSON.stringify(estadoActual));
+            localStorage.setItem(CLAVE_STORAGE_LANG, estadoActual.idioma);
+        } catch (e) {
+            console.error('Error al guardar configuración:', e);
+        }
+    }
+
+    /**
      * Guarda la configuración actual en localStorage
      */
     function guardarConfiguracion() {
@@ -114,12 +154,8 @@
             estadoActual.fondoEspacio = selFondo.value;
         }
 
-        try {
-            localStorage.setItem(CLAVE_STORAGE_CONFIG, JSON.stringify(estadoActual));
-            localStorage.setItem(CLAVE_STORAGE_LANG, estadoActual.idioma);
-        } catch (e) {
-            console.error('Error al guardar configuración:', e);
-        }
+        guardarSilencioso();
+        aplicarFondoEnUI();
 
         // Feedback visual en el botón de guardar
         const btnGuardar = document.getElementById('btn-guardar-config');
@@ -144,10 +180,8 @@
         const langActual = estadoActual.idioma;
         estadoActual = Object.assign({}, valoresPorDefecto, { idioma: langActual });
         aplicarConfiguracionEnUI();
-
-        try {
-            localStorage.setItem(CLAVE_STORAGE_CONFIG, JSON.stringify(estadoActual));
-        } catch (e) {}
+        guardarSilencioso();
+        aplicarFondoEnUI();
 
         const btnRestablecer = document.getElementById('btn-restablecer-config');
         if (btnRestablecer) {
@@ -196,6 +230,25 @@
             btnEn.addEventListener('click', (e) => {
                 e.preventDefault();
                 cambiarIdiomaEspecifico('en');
+            });
+        }
+
+        // Listener en tiempo real para el switch de rotación
+        const chkRotacion = document.getElementById('cfg-rotacion');
+        if (chkRotacion) {
+            chkRotacion.addEventListener('change', () => {
+                estadoActual.rotacionAuto = chkRotacion.checked;
+                guardarSilencioso();
+            });
+        }
+
+        // Listener en tiempo real para el selector de fondo
+        const selFondo = document.getElementById('cfg-fondo');
+        if (selFondo) {
+            selFondo.addEventListener('change', () => {
+                estadoActual.fondoEspacio = selFondo.value;
+                guardarSilencioso();
+                aplicarFondoEnUI();
             });
         }
 

@@ -595,58 +595,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar los nombres según el idioma activo al cargar
     actualizarNombresSatelites();
-     // Aplicar configuración guardada del sistema (rotación, fondo, etiquetas)
+
+    // Aplicar configuración guardada del sistema (rotación automática de la Tierra y fondo del espacio)
     function aplicarConfiguracionGlobal() {
-        
+        let config = {
+            idioma: 'es',
+            rotacionAuto: true,
+            fondoEspacio: 'video'
+        };
+
+        try {
             const raw = localStorage.getItem('metallic_earth_configuracion');
-            const config = raw ? JSON.parse(raw) : {
-                idioma: 'es',
-                rotacionAuto: true,
-                etiquetasOrbitas: true,
-                fondoEspacio: 'video'
-            };
-
-            // 1. Rotación automática de la Tierra
-            if (visorTierra) {
-                if (config.rotacionAuto === false) {
-                    visorTierra.removeAttribute('auto-rotate');
-                    visorTierra.autoRotate = false;
-                } else {
-                    visorTierra.setAttribute('auto-rotate', '');
-                    visorTierra.autoRotate = true;
-                }
+            if (raw) {
+                config = Object.assign(config, JSON.parse(raw));
             }
+        } catch (e) {
+            console.error('Error al leer configuración:', e);
+        }
 
-            // 2. Fondo del espacio
-            const videoFondo = document.getElementById('video-fondo');
+        // 1. Rotación automática de la Tierra
+        if (visorTierra) {
+            const debeRotar = config.rotacionAuto !== false;
+            if (debeRotar) {
+                visorTierra.setAttribute('auto-rotate', '');
+                visorTierra.autoRotate = true;
+            } else {
+                visorTierra.removeAttribute('auto-rotate');
+                visorTierra.autoRotate = false;
+            }
+        }
+
+        // 2. Fondo del espacio
+        const videoFondo = document.getElementById('video-fondo');
+        const fondoTipo = config.fondoEspacio || 'video';
+
+        if (fondoTipo === 'imagen') {
             if (videoFondo) {
-                if (config.fondoEspacio === 'imagen') {
-                    videoFondo.style.display = 'none';
-                    document.body.style.backgroundImage = "url('imagenes/fondoEstrellas.jpg')";
-                    document.body.style.backgroundSize = 'cover';
-                    document.body.style.backgroundPosition = 'center';
-                    document.body.style.backgroundAttachment = 'fixed';
-                    document.body.style.backgroundColor = '#030a1e';
-                } else if (config.fondoEspacio === 'oscuro') {
-                    videoFondo.style.display = 'none';
-                    document.body.style.backgroundImage = 'none';
-                    document.body.style.backgroundColor = '#030a1e';
-                } else {
-                    videoFondo.style.display = 'block';
-                    document.body.style.backgroundImage = 'none';
-                }
+                videoFondo.style.display = 'none';
+                try { videoFondo.pause(); } catch (e) {}
             }
-        
+            document.body.style.backgroundImage = "url('imagenes/fondoEstrellas.jpg')";
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.backgroundColor = '#030a1e';
+        } else if (fondoTipo === 'oscuro') {
+            if (videoFondo) {
+                videoFondo.style.display = 'none';
+                try { videoFondo.pause(); } catch (e) {}
+            }
+            document.body.style.backgroundImage = 'none';
+            document.body.style.backgroundColor = '#020617';
+        } else {
+            // 'video' por defecto
+            if (videoFondo) {
+                videoFondo.style.display = 'block';
+                try { videoFondo.play().catch(() => {}); } catch (e) {}
+            }
+            document.body.style.backgroundImage = 'none';
+            document.body.style.backgroundColor = '#07173f';
+        }
     }
 
-    
+    // Ejecutar aplicación de configuración inmediatamente al inicializar
+    aplicarConfiguracionGlobal();
 
-    // Escuchar cambios de configuración si ocurren en vivo
+    // Re-aplicar cuando el visor 3D termine de cargar o se defina
+    if (visorTierra) {
+        visorTierra.addEventListener('load', aplicarConfiguracionGlobal);
+    }
+    if (window.customElements) {
+        customElements.whenDefined('model-viewer').then(aplicarConfiguracionGlobal);
+    }
+
+    // Escuchar cambios de configuración si ocurren en vivo o al reenfocar la pestaña
     window.addEventListener('storage', (e) => {
         if (e.key === 'metallic_earth_configuracion') {
             aplicarConfiguracionGlobal();
         }
     });
+    window.addEventListener('focus', aplicarConfiguracionGlobal);
 
     // Escuchar cambios de idioma globales disparados por el traductor
     window.addEventListener('metallic_idioma_cambiado', () => {
