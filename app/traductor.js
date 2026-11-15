@@ -26,6 +26,8 @@
 
             // index.html - Vista principal
             indexTituloObjetos: "Lista de objetos",
+            cargaModeloTitulo: "Cargando modelo 3D...",
+            cargaModeloSub: "Sincronizando telemetría y mapa orbital...",
             panelTag: "OBJETO ORBITAL",
             panelTelemetria: "Telemetría y Órbita",
             panelAltitudLbl: "Altitud",
@@ -96,6 +98,8 @@
 
             // index.html - Main view
             indexTituloObjetos: "Orbital Objects",
+            cargaModeloTitulo: "Loading 3D model...",
+            cargaModeloSub: "Synchronizing telemetry and orbital map...",
             panelTag: "ORBITAL OBJECT",
             panelTelemetria: "Telemetry & Orbit",
             panelAltitudLbl: "Altitude",

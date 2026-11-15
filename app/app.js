@@ -368,6 +368,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Control del aviso de carga del modelo 3D
+    const avisoCarga = document.getElementById('aviso-carga-modelo');
+    const barraProgreso = document.getElementById('carga-barra-fill');
+
+    function ocultarAvisoCarga() {
+        if (!avisoCarga) return;
+        if (barraProgreso) {
+            barraProgreso.style.width = '100%';
+        }
+        setTimeout(() => {
+            avisoCarga.classList.add('oculto');
+            setTimeout(() => {
+                avisoCarga.style.display = 'none';
+            }, 500);
+        }, 350);
+    }
+
+    if (visorTierra && avisoCarga) {
+        visorTierra.addEventListener('progress', (e) => {
+            if (barraProgreso && e.detail && typeof e.detail.totalProgress === 'number') {
+                const pct = Math.max(15, Math.round(e.detail.totalProgress * 100));
+                barraProgreso.style.width = `${pct}%`;
+            }
+        });
+
+        if (visorTierra.loaded) {
+            ocultarAvisoCarga();
+        } else {
+            visorTierra.addEventListener('load', ocultarAvisoCarga, { once: true });
+        }
+
+        // Respaldo de seguridad para retirar el aviso tras 15s si la conexión se interrumpe
+        setTimeout(() => {
+            if (avisoCarga && !avisoCarga.classList.contains('oculto')) {
+                ocultarAvisoCarga();
+            }
+        }, 15000);
+    }
+
     // 4. Función para calcular las coordenadas 3D de un satélite en un instante t
     function calcularPosicionOrbital(sat, segundos) {
         const r = radioTierra * sat.radioMult;

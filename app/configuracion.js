@@ -1,6 +1,6 @@
 /**
- * Metallic Earth - Script de Configuración Simple
- * Gestiona el guardado de preferencias y la interacción del botón de traducción.
+ * Metallic Earth - Script de Configuración
+ * Gestiona las preferencias de visualización e idioma según los elementos activos de la interfaz.
  */
 
 (function () {
@@ -12,17 +12,22 @@
     const valoresPorDefecto = {
         idioma: 'es',
         rotacionAuto: true,
-        etiquetasOrbitas: true,
         fondoEspacio: 'video'
     };
 
     let estadoActual = Object.assign({}, valoresPorDefecto);
     let timeoutToast = null;
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function init() {
         cargarConfiguracion();
         enlazarEventos();
-    });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 
     /**
      * Carga la configuración guardada de localStorage
@@ -50,13 +55,14 @@
      */
     function aplicarConfiguracionEnUI() {
         const chkRotacion = document.getElementById('cfg-rotacion');
-        if (chkRotacion) chkRotacion.checked = estadoActual.rotacionAuto;
-
-        const chkEtiquetas = document.getElementById('cfg-etiquetas');
-        if (chkEtiquetas) chkEtiquetas.checked = estadoActual.etiquetasOrbitas;
+        if (chkRotacion) {
+            chkRotacion.checked = estadoActual.rotacionAuto !== false;
+        }
 
         const selFondo = document.getElementById('cfg-fondo');
-        if (selFondo) selFondo.value = estadoActual.fondoEspacio;
+        if (selFondo && estadoActual.fondoEspacio) {
+            selFondo.value = estadoActual.fondoEspacio;
+        }
 
         actualizarBotonesIdiomaActivo(estadoActual.idioma);
     }
@@ -67,28 +73,11 @@
     function actualizarBotonesIdiomaActivo(idioma) {
         const btnEs = document.getElementById('btn-lang-es');
         const btnEn = document.getElementById('btn-lang-en');
-        if (btnEs && btnEn) {
+        if (btnEs) {
             btnEs.classList.toggle('activo', idioma === 'es');
+        }
+        if (btnEn) {
             btnEn.classList.toggle('activo', idioma === 'en');
-        }
-
-        const btnTraductorTexto = document.getElementById('btn-traductor-texto');
-        if (btnTraductorTexto) {
-            btnTraductorTexto.textContent = (idioma === 'es') ? 'Cambiar a Inglés' : 'Switch to Spanish';
-        }
-    }
-
-    /**
-     * Alterna entre Español e Inglés mediante el traductor global
-     */
-    function alternarIdioma() {
-        if (window.MetallicTraductor && typeof window.MetallicTraductor.alternarIdioma === 'function') {
-            window.MetallicTraductor.alternarIdioma();
-            const nuevo = window.MetallicTraductor.obtenerIdioma();
-            estadoActual.idioma = nuevo;
-            actualizarBotonesIdiomaActivo(nuevo);
-            const msg = (nuevo === 'es') ? 'Idioma cambiado a Español.' : 'Language switched to English.';
-            mostrarToast(msg);
         }
     }
 
@@ -96,13 +85,19 @@
      * Cambia a un idioma específico
      */
     function cambiarIdiomaEspecifico(nuevoIdioma) {
+        estadoActual.idioma = nuevoIdioma;
+
         if (window.MetallicTraductor && typeof window.MetallicTraductor.cambiarIdioma === 'function') {
             window.MetallicTraductor.cambiarIdioma(nuevoIdioma, true);
-            estadoActual.idioma = nuevoIdioma;
-            actualizarBotonesIdiomaActivo(nuevoIdioma);
-            const msg = (nuevoIdioma === 'es') ? 'Idioma cambiado a Español.' : 'Language switched to English.';
-            mostrarToast(msg);
+        } else {
+            try {
+                localStorage.setItem(CLAVE_STORAGE_LANG, nuevoIdioma);
+            } catch (e) {}
         }
+
+        actualizarBotonesIdiomaActivo(nuevoIdioma);
+        const msg = (nuevoIdioma === 'en') ? 'Language switched to English.' : 'Idioma cambiado a Español.';
+        mostrarToast(msg);
     }
 
     /**
@@ -110,18 +105,33 @@
      */
     function guardarConfiguracion() {
         const chkRotacion = document.getElementById('cfg-rotacion');
-        if (chkRotacion) estadoActual.rotacionAuto = chkRotacion.checked;
-
-        const chkEtiquetas = document.getElementById('no iquetas');
-        if (chkEtiquetas) estadoActual.etiquetasOrbitas = chkEtiquetas.checked;
+        if (chkRotacion) {
+            estadoActual.rotacionAuto = chkRotacion.checked;
+        }
 
         const selFondo = document.getElementById('cfg-fondo');
-        if (selFondo) estadoActual.fondoEspacio = selFondo.value;
+        if (selFondo) {
+            estadoActual.fondoEspacio = selFondo.value;
+        }
 
         try {
             localStorage.setItem(CLAVE_STORAGE_CONFIG, JSON.stringify(estadoActual));
             localStorage.setItem(CLAVE_STORAGE_LANG, estadoActual.idioma);
-        } catch (e) {}
+        } catch (e) {
+            console.error('Error al guardar configuración:', e);
+        }
+
+        // Feedback visual en el botón de guardar
+        const btnGuardar = document.getElementById('btn-guardar-config');
+        if (btnGuardar) {
+            const textoOriginal = btnGuardar.textContent;
+            btnGuardar.textContent = (estadoActual.idioma === 'en') ? 'Saved!' : '¡Guardado!';
+            btnGuardar.style.backgroundColor = '#00a86b';
+            setTimeout(() => {
+                btnGuardar.textContent = textoOriginal;
+                btnGuardar.style.backgroundColor = '';
+            }, 1400);
+        }
 
         const msg = (estadoActual.idioma === 'en') ? 'Settings successfully saved.' : 'Configuración guardada con éxito.';
         mostrarToast(msg);
@@ -138,6 +148,15 @@
         try {
             localStorage.setItem(CLAVE_STORAGE_CONFIG, JSON.stringify(estadoActual));
         } catch (e) {}
+
+        const btnRestablecer = document.getElementById('btn-restablecer-config');
+        if (btnRestablecer) {
+            const textoOriginal = btnRestablecer.textContent;
+            btnRestablecer.textContent = (langActual === 'en') ? 'Reset!' : '¡Restablecido!';
+            setTimeout(() => {
+                btnRestablecer.textContent = textoOriginal;
+            }, 1400);
+        }
 
         const msg = (langActual === 'en') ? 'Settings reset to default values.' : 'Configuración restablecida a valores por defecto.';
         mostrarToast(msg);
@@ -164,29 +183,36 @@
      * Enlaza eventos de los botones y switches
      */
     function enlazarEventos() {
-        const btnTraductor = document.getElementById('btn-traductor-principal');
-        if (btnTraductor) {
-            btnTraductor.addEventListener('click', alternarIdioma);
-        }
-
         const btnEs = document.getElementById('btn-lang-es');
         if (btnEs) {
-            btnEs.addEventListener('click', () => cambiarIdiomaEspecifico('es'));
+            btnEs.addEventListener('click', (e) => {
+                e.preventDefault();
+                cambiarIdiomaEspecifico('es');
+            });
         }
 
         const btnEn = document.getElementById('btn-lang-en');
         if (btnEn) {
-            btnEn.addEventListener('click', () => cambiarIdiomaEspecifico('en'));
+            btnEn.addEventListener('click', (e) => {
+                e.preventDefault();
+                cambiarIdiomaEspecifico('en');
+            });
         }
 
         const btnGuardar = document.getElementById('btn-guardar-config');
         if (btnGuardar) {
-            btnGuardar.addEventListener('click', guardarConfiguracion);
+            btnGuardar.addEventListener('click', (e) => {
+                e.preventDefault();
+                guardarConfiguracion();
+            });
         }
 
         const btnRestablecer = document.getElementById('btn-restablecer-config');
         if (btnRestablecer) {
-            btnRestablecer.addEventListener('click', restablecerValores);
+            btnRestablecer.addEventListener('click', (e) => {
+                e.preventDefault();
+                restablecerValores();
+            });
         }
 
         // Sincronizar si cambia el idioma desde el nav

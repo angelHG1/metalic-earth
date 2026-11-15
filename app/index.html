@@ -54,6 +54,21 @@
         <!--Model viewer-->
         <section class="visualizacion">
             <div class="area-planeta">
+                <!-- Aviso de carga del modelo 3D -->
+                <div id="aviso-carga-modelo" class="aviso-carga" role="status" aria-live="polite">
+                    <div class="carga-spinner">
+                        <div class="carga-orbita"></div>
+                        <div class="carga-nucleo"></div>
+                    </div>
+                    <div class="carga-textos">
+                        <span class="carga-titulo" data-i18n="cargaModeloTitulo">Cargando modelo 3D...</span>
+                        <span class="carga-subtitulo" data-i18n="cargaModeloSub">Sincronizando telemetría y mapa orbital...</span>
+                    </div>
+                    <div class="carga-barra-progreso">
+                        <div id="carga-barra-fill" class="carga-barra-fill"></div>
+                    </div>
+                </div>
+
             <model-viewer
                 id="visor-tierra"
                 src="tierra/scene.gltf"
