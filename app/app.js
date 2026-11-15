@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 3,
-            nombre: 'Satélite 3',
+            nombre: 'ATS 1',
             radioMult: 1.34,
             inclinacion: 1.05,     // ~60°
             ascension: 1.30,
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 4,
-            nombre: 'Satélite 4',
+            nombre: 'LANDSAT 1',
             radioMult: 1.22,
             inclinacion: -0.40,    // ~-23°
             ascension: 1.95,
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 5,
-            nombre: 'Satélite 5',
+            nombre: 'TDRS-A',
             radioMult: 1.42,
             inclinacion: 1.25,     // ~72° (casi polar)
             ascension: 2.60,
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 6,
-            nombre: 'Satélite 6',
+            nombre: 'Galex',
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
             ascension: 3.25,
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 7,
-            nombre: 'Satélite 7',
+            nombre: 'FAST',
             radioMult: 1.46,
             inclinacion: 0.55,     // ~31°
             ascension: 3.90,
