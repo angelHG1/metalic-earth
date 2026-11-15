@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metallic Earth - Configuración</title>
+    <title data-i18n="docTitleConfig">Metallic Earth - Configuración</title>
     <link rel="stylesheet" href="stilo.css">
     <link rel="stylesheet" href="configuracion.css">
 </head>
 
 <body>
-    <!-- Fondos de ambiente espacial -->
+    <!-- fondo-->
     <div class="fondo"></div>
     <div class="capa-fondo"></div>
 
@@ -23,275 +23,85 @@
             <a href="ayuda.html" data-i18n="navAyuda">Ayuda</a>
             <a href="configuración.html" class="seleccionado" data-i18n="navConfig">Configuración</a>
             <button id="btn-idioma-nav" class="btn-idioma-nav" type="button" aria-label="Cambiar idioma">
-                <span class="icono-nav-globo">🌐</span>
                 <span id="texto-idioma-nav">EN</span>
             </button>
         </nav>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL DE CONFIGURACIÓN -->
-    <main class="config-contenedor">
-        
-        <!-- Bloque de Título y Botón Rápido de Traducción -->
-        <section class="config-header-bloque">
-            <div class="config-titulo-area">
-                <h2>
-                    <span class="config-icono-titulo">⚙️</span>
-                    <span data-i18n="configTitulo">Configuración del Sistema</span>
-                </h2>
-                <p class="config-subtitulo" data-i18n="configSubtitulo">
-                    Personaliza la experiencia visual, parámetros orbitales y preferencias del sistema Metallic Earth.
-                </p>
+    <!-- UNICO RECUADRO DE CONFIGURACION (Estilo AcercaDe.html) -->
+    <div class="Configuracion">
+        <h2 data-i18n="configTitulo">Configuración</h2>
+        <p class="subtitulo-config" data-i18n="configSubtitulo">Ajustes básicos del sistema y preferencias de visualización.</p>
+
+        <div class="config-filas">
+
+            <!-- Fila 1: Idioma de la página y botón de traducción -->
+            <div class="config-fila">
+                <div class="config-info">
+                    <span class="config-label" data-i18n="optIdiomaTitulo">Idioma de la página</span>
+                    <span class="config-desc" data-i18n="optIdiomaDesc">Selecciona el idioma principal de la plataforma.</span>
+                </div>
+                <div class="grupo-idioma-simple">
+                    <button type="button" class="btn-idioma-opcion activo" id="btn-lang-es" data-i18n="btnEs">Español</button>
+                    <button type="button" class="btn-idioma-opcion" id="btn-lang-en" data-i18n="btnEn">English</button>
+                    <button type="button" class="btn-traducir-simple" id="btn-traductor-principal">
+                        <span id="btn-traductor-texto">Cambiar a Inglés</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- Botón de Traducción Dinámica Español <-> Inglés -->
-            <div class="config-acciones-rapidas">
-                <button id="btn-traductor-principal" class="btn-traductor" type="button" aria-label="Traducir página">
-                    <span class="icono-globo">🌐</span>
-                    <span id="btn-traductor-texto">Switch to English</span>
-                    <span id="badge-idioma-actual" class="badge-idioma">ES</span>
-                </button>
+            <!-- Fila 2: Rotación automática -->
+            <div class="config-fila">
+                <div class="config-info">
+                    <span class="config-label" data-i18n="optRotacionTitulo">Rotación automática de la Tierra</span>
+                    <span class="config-desc" data-i18n="optRotacionDesc">Girar automáticamente el modelo 3D cuando esté inactivo.</span>
+                </div>
+                <label class="switch" aria-label="Rotación automática">
+                    <input type="checkbox" id="cfg-rotacion" checked>
+                    <span class="slider"></span>
+                </label>
             </div>
-        </section>
 
-        <!-- Cuadrícula de Opciones de Configuración -->
-        <div class="config-grid">
-
-            <!-- TARJETA 1: Idioma y Región -->
-            <section class="config-card">
-                <div class="config-card-header">
-                    <span class="icono-seccion">🌍</span>
-                    <h3 data-i18n="tituloIdioma">Idioma y Región</h3>
-                    <span class="seccion-tag" data-i18n="tagLocalizacion">LOCALIZACIÓN</span>
+            <!-- Fila 3: Etiquetas flotantes -->
+            <div class="config-fila">
+                <div class="config-info">
+                    <span class="config-label" data-i18n="optEtiquetasTitulo">Etiquetas de satélites</span>
+                    <span class="config-desc" data-i18n="optEtiquetasDesc">Mostrar los nombres de satélites directamente sobre el visor.</span>
                 </div>
+                <label class="switch" aria-label="Etiquetas orbitales">
+                    <input type="checkbox" id="cfg-etiquetas" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
 
-                <div class="config-opciones-lista">
-                    <!-- Selector directo de idioma -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optIdiomaTitulo">Idioma de la interfaz</span>
-                            <span class="opcion-descripcion" data-i18n="optIdiomaDesc">Selecciona el idioma principal para textos, datos y telemetría</span>
-                        </div>
-                        <div class="selector-idioma-grupo">
-                            <button type="button" class="btn-opcion-idioma activo" id="btn-lang-es" data-i18n="btnEs">🇪🇸 Español</button>
-                            <button type="button" class="btn-opcion-idioma" id="btn-lang-en" data-i18n="btnEn">🇺🇸 English</button>
-                        </div>
-                    </div>
-
-                    <!-- Formato horario -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optHorarioTitulo">Formato horario</span>
-                            <span class="opcion-descripcion" data-i18n="optHorarioDesc">Formato para marcas de tiempo y periodos orbitales</span>
-                        </div>
-                        <div class="config-select-wrapper">
-                            <select id="cfg-horario" class="config-select" aria-label="Formato horario">
-                                <option value="utc" data-i18n="horarioUtc">UTC (Tiempo Universal)</option>
-                                <option value="12h" data-i18n="horario12h">Hora Local (12 horas)</option>
-                                <option value="24h" data-i18n="horario24h">Hora Local (24 horas)</option>
-                            </select>
-                            <span class="select-flecha">▼</span>
-                        </div>
-                    </div>
+            <!-- Fila 4: Fondo espacial -->
+            <div class="config-fila">
+                <div class="config-info">
+                    <span class="config-label" data-i18n="optFondoTitulo">Fondo del espacio</span>
+                    <span class="config-desc" data-i18n="optFondoDesc">Fondo visual aplicado al simulador orbital.</span>
                 </div>
-            </section>
-
-            <!-- TARJETA 2: Visualización 3D -->
-            <section class="config-card">
-                <div class="config-card-header">
-                    <span class="icono-seccion">🪐</span>
-                    <h3 data-i18n="tituloVisualizacion">Visualización 3D</h3>
-                    <span class="seccion-tag" data-i18n="tagGraficos">GRÁFICOS</span>
-                </div>
-
-                <div class="config-opciones-lista">
-                    <!-- Rotación automática -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optRotacionTitulo">Rotación automática de la Tierra</span>
-                            <span class="opcion-descripcion" data-i18n="optRotacionDesc">Girar suavemente el planeta Tierra cuando no haya interacción</span>
-                        </div>
-                        <label class="switch" aria-label="Rotación automática">
-                            <input type="checkbox" id="cfg-rotacion" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-
-                    <!-- Calidad de Sombras -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optSombrasTitulo">Calidad gráfica y sombras</span>
-                            <span class="opcion-descripcion" data-i18n="optSombrasDesc">Ajusta la intensidad de sombras y fidelidad de los materiales</span>
-                        </div>
-                        <div class="config-select-wrapper">
-                            <select id="cfg-sombras" class="config-select" aria-label="Calidad gráfica">
-                                <option value="alta" data-i18n="calidadAlta">Alta (Recomendada)</option>
-                                <option value="media" data-i18n="calidadMedia">Media</option>
-                                <option value="baja" data-i18n="calidadBaja">Baja (Ahorro de energía)</option>
-                            </select>
-                            <span class="select-flecha">▼</span>
-                        </div>
-                    </div>
-
-                    <!-- Etiquetas flotantes -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optEtiquetasTitulo">Etiquetas orbitales flotantes</span>
-                            <span class="opcion-descripcion" data-i18n="optEtiquetasDesc">Mostrar los nombres de satélites directamente sobre el visor</span>
-                        </div>
-                        <label class="switch" aria-label="Etiquetas orbitales">
-                            <input type="checkbox" id="cfg-etiquetas" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-
-                    <!-- Fondo del visor -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optFondoTitulo">Fondo del espacio</span>
-                            <span class="opcion-descripcion" data-i18n="optFondoDesc">Fondo visual aplicado al simulador orbital</span>
-                        </div>
-                        <div class="config-select-wrapper">
-                            <select id="cfg-fondo" class="config-select" aria-label="Fondo del espacio">
-                                <option value="video" data-i18n="fondoVideo">Video dinámico de estrellas</option>
-                                <option value="imagen" data-i18n="fondoImagen">Imagen fija del cosmos</option>
-                                <option value="oscuro" data-i18n="fondoOscuro">Espacio profundo oscuro</option>
-                            </select>
-                            <span class="select-flecha">▼</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- TARJETA 3: Telemetría y Unidades -->
-            <section class="config-card">
-                <div class="config-card-header">
-                    <span class="icono-seccion">📡</span>
-                    <h3 data-i18n="tituloTelemetria">Telemetría y Unidades</h3>
-                    <span class="seccion-tag" data-i18n="tagDatos">DATOS</span>
-                </div>
-
-                <div class="config-opciones-lista">
-                    <!-- Unidad de Altitud -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optAltitudTitulo">Unidad de Altitud</span>
-                            <span class="opcion-descripcion" data-i18n="optAltitudDesc">Escala empleada para la distancia orbital de los objetos</span>
-                        </div>
-                        <div class="config-select-wrapper">
-                            <select id="cfg-altitud" class="config-select" aria-label="Unidad de Altitud">
-                                <option value="km" data-i18n="altitudKm">Kilómetros (km)</option>
-                                <option value="mi" data-i18n="altitudMi">Millas (mi)</option>
-                                <option value="nm" data-i18n="altitudNm">Millas Náuticas (NM)</option>
-                            </select>
-                            <span class="select-flecha">▼</span>
-                        </div>
-                    </div>
-
-                    <!-- Unidad de Velocidad -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optVelocidadTitulo">Unidad de Velocidad</span>
-                            <span class="opcion-descripcion" data-i18n="optVelocidadDesc">Medición de velocidad en la órbita calculada</span>
-                        </div>
-                        <div class="config-select-wrapper">
-                            <select id="cfg-velocidad" class="config-select" aria-label="Unidad de Velocidad">
-                                <option value="kms" data-i18n="velKms">Kilómetros por segundo (km/s)</option>
-                                <option value="kmh" data-i18n="velKmh">Kilómetros por hora (km/h)</option>
-                                <option value="mph" data-i18n="velMph">Millas por hora (mph)</option>
-                            </select>
-                            <span class="select-flecha">▼</span>
-                        </div>
-                    </div>
-
-                    <!-- Frecuencia de cálculo -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optTasaTitulo">Frecuencia de actualización</span>
-                            <span class="opcion-descripcion" data-i18n="optTasaDesc">Cadencia de refresco para el cálculo de posiciones satelitales</span>
-                        </div>
-                        <div class="config-select-wrapper">
-                            <select id="cfg-tasa" class="config-select" aria-label="Frecuencia de actualización">
-                                <option value="60" data-i18n="tasa60">Tiempo real (60 FPS)</option>
-                                <option value="30" data-i18n="tasa30">Equilibrada (30 FPS)</option>
-                                <option value="15" data-i18n="tasa15">Bajo consumo (15 FPS)</option>
-                            </select>
-                            <span class="select-flecha">▼</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- TARJETA 4: Filtros y Sistema -->
-            <section class="config-card">
-                <div class="config-card-header">
-                    <span class="icono-seccion">🛰️</span>
-                    <h3 data-i18n="tituloSistema">Filtros y Audio</h3>
-                    <span class="seccion-tag" data-i18n="tagSistema">SISTEMA</span>
-                </div>
-
-                <div class="config-opciones-lista">
-                    <!-- Resaltar basura espacial -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optResaltarTitulo">Destacar basura espacial</span>
-                            <span class="opcion-descripcion" data-i18n="optResaltarDesc">Marcar visualmente satélites inactivos o abandonados</span>
-                        </div>
-                        <label class="switch" aria-label="Destacar basura espacial">
-                            <input type="checkbox" id="cfg-basura" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-
-                    <!-- Efectos de sonido -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optSonidoTitulo">Efectos de sonido interactivos</span>
-                            <span class="opcion-descripcion" data-i18n="optSonidoDesc">Emitir retroalimentación sonora al interactuar con satélites</span>
-                        </div>
-                        <label class="switch" aria-label="Efectos de sonido interactivos">
-                            <input type="checkbox" id="cfg-sonido">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-
-                    <!-- Despliegue automático de panel -->
-                    <div class="config-opcion">
-                        <div class="opcion-info">
-                            <span class="opcion-titulo" data-i18n="optAutoAbrirTitulo">Despliegue automático de telemetría</span>
-                            <span class="opcion-descripcion" data-i18n="optAutoAbrirDesc">Abrir el panel lateral inmediatamente al pulsar un satélite</span>
-                        </div>
-                        <label class="switch" aria-label="Despliegue automático de telemetría">
-                            <input type="checkbox" id="cfg-autoabrir" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                </div>
-            </section>
+                <select id="cfg-fondo" class="select-simple" aria-label="Fondo del espacio">
+                    <option value="video" data-i18n="fondoVideo">Video de estrellas</option>
+                    <option value="imagen" data-i18n="fondoImagen">Imagen fija del cosmos</option>
+                    <option value="oscuro" data-i18n="fondoOscuro">Fondo oscuro</option>
+                </select>
+            </div>
 
         </div>
 
-        <!-- Barra inferior de acciones (Guardar / Restablecer) -->
-        <section class="config-barra-acciones">
-            <button type="button" id="btn-restablecer-config" class="btn-accion btn-restablecer">
-                <span>↺</span>
-                <span data-i18n="btnRestablecer">Restablecer valores</span>
-            </button>
-            <button type="button" id="btn-guardar-config" class="btn-accion btn-guardar">
-                <span>💾</span>
-                <span data-i18n="btnGuardar">Guardar configuración</span>
-            </button>
-        </section>
-
-    </main>
-
-    <!-- Notificación Toast flotante -->
-    <div id="toast-notificacion" class="toast-notificacion" role="status" aria-live="polite">
-        <span class="toast-icono">✨</span>
-        <span id="toast-mensaje">Configuración guardada con éxito</span>
+        <!-- Pie del recuadro: Guardar y Restablecer -->
+        <div class="config-pie">
+            <button type="button" id="btn-restablecer-config" class="btn-restablecer-simple" data-i18n="btnRestablecer">Restablecer</button>
+            <button type="button" id="btn-guardar-config" class="btn-guardar-simple" data-i18n="btnGuardar">Guardar cambios</button>
+        </div>
     </div>
 
-    <!-- Script de configuración y traducción global -->
+    <!-- Toast flotante simple sin emojis -->
+    <div id="toast-notificacion" class="toast-simple" role="status" aria-live="polite">
+        <span id="toast-mensaje">Configuración guardada con éxito.</span>
+    </div>
+
+    <!-- Scripts de internacionalización y configuración -->
     <script src="traductor.js"></script>
     <script src="configuracion.js"></script>
 </body>
