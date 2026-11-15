@@ -513,6 +513,59 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar los nombres según el idioma activo al cargar
     actualizarNombresSatelites();
 
+    // Aplicar configuración guardada del sistema (rotación, fondo, etiquetas)
+    function aplicarConfiguracionGlobal() {
+        
+            const raw = localStorage.getItem('metallic_earth_configuracion');
+            const config = raw ? JSON.parse(raw) : {
+                idioma: 'es',
+                rotacionAuto: true,
+                etiquetasOrbitas: true,
+                fondoEspacio: 'video'
+            };
+
+            // 1. Rotación automática de la Tierra
+            if (visorTierra) {
+                if (config.rotacionAuto === false) {
+                    visorTierra.removeAttribute('auto-rotate');
+                    visorTierra.autoRotate = false;
+                } else {
+                    visorTierra.setAttribute('auto-rotate', '');
+                    visorTierra.autoRotate = true;
+                }
+            }
+
+            // 2. Fondo del espacio
+            const videoFondo = document.getElementById('video-fondo');
+            if (videoFondo) {
+                if (config.fondoEspacio === 'imagen') {
+                    videoFondo.style.display = 'none';
+                    document.body.style.backgroundImage = "url('imagenes/fondoEstrellas.jpg')";
+                    document.body.style.backgroundSize = 'cover';
+                    document.body.style.backgroundPosition = 'center';
+                    document.body.style.backgroundAttachment = 'fixed';
+                    document.body.style.backgroundColor = '#030a1e';
+                } else if (config.fondoEspacio === 'oscuro') {
+                    videoFondo.style.display = 'none';
+                    document.body.style.backgroundImage = 'none';
+                    document.body.style.backgroundColor = '#030a1e';
+                } else {
+                    videoFondo.style.display = 'block';
+                    document.body.style.backgroundImage = 'none';
+                }
+            }
+        
+    }
+
+    
+
+    // Escuchar cambios de configuración si ocurren en vivo
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'metallic_earth_configuracion') {
+            aplicarConfiguracionGlobal();
+        }
+    });
+
     // Escuchar cambios de idioma globales disparados por el traductor
     window.addEventListener('metallic_idioma_cambiado', () => {
         actualizarNombresSatelites();
