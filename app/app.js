@@ -3,6 +3,8 @@
  * Gestión de satélites orbitales, animación 3D e interactividad lateral
  */
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const visorTierra = document.getElementById('visor-tierra');
     const listaObjetosNav = document.getElementById('lista-objetos');
@@ -11,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Elementos del panel lateral
     const panelTitulo = document.getElementById('panel-titulo');
+    const panelImagen = document.getElementById('panel-imagen');
     const panelEstado = document.getElementById('panel-estado');
     const panelAltitud = document.getElementById('panel-altitud');
     const panelVelocidad = document.getElementById('panel-velocidad');
@@ -27,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 1,
             nombre: 'TIROS 1',
             nombreEn: 'TIROS 1',
+            imagen: 'TIROS 1.jpg',  
             radioMult: 1.20,
             inclinacion: 0.30,     // radianes (~17°)
             ascension: 0.0,        // orientación del plano orbital
@@ -51,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 2,
             nombre: 'SYNCOM 1',
             nombreEn: 'SYNCOM 1',
+            imagen: 'SYNCOM-11.jpg',
             radioMult: 1.26,
             inclinacion: -0.75,    // ~-43°
             ascension: 0.65,
@@ -72,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 3,
             nombreEn: 'ATS 1',
+            imagen: 'ATS 1.jpg',
             nombre: 'ATS 1',
             radioMult: 1.34,
             inclinacion: 1.05,     // ~60°
@@ -93,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 4,
             nombre: 'Landsat 1',
+            imagen: 'Landsat 1.jpg',
             radioMult: 1.22,
             inclinacion: -0.40,    // ~-23°
             ascension: 1.95,
@@ -116,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 5,
             nombre: 'TDRS-A',
+            imagen: 'TDRS-A.jpg',
             nombreEn: 'Satellite 5',
             radioMult: 1.42,
             inclinacion: 1.25,     // ~72° (casi polar)
@@ -139,8 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 6,
-            nombre: 'Satélite 6',
-            nombreEn: 'Satellite 6',
+            nombre: 'FAST',
+            imagen: 'FAST.jpg',
+            nombreEn: 'FAST',
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
             ascension: 3.25,
@@ -158,7 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 7,
-            nombre: 'Satélite 7',
+            nombre: 'NIMBUS 3',
+            imagen: 'satelite7.jpg',
+            nombreEn: 'Satellite 7',
             radioMult: 1.46,
             inclinacion: 0.55,     // ~31°
             ascension: 3.90,
@@ -176,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 8,
-            nombre: 'Satélite 8',
+            nombre: 'EO 1',
             nombreEn: 'Satellite 8',
             radioMult: 1.36,
             inclinacion: -1.20,    // ~-69°
@@ -224,8 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 10,
-            nombre: 'Satélite 10',
+            nombre: 'SEASAT 1',
             nombreEn: 'Satellite 10',
+            imagen: 'SEASAT 1.jpg',
             radioMult: 1.22,
             inclinacion: 0.85,     // ~49°
             ascension: 5.85,
@@ -463,6 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Actualizar contenido del panel lateral respetando el idioma actual
         panelTitulo.textContent = esIngles && sat.nombreEn ? sat.nombreEn : sat.nombre;
+        panelImagen.src = sat.imagen ? `imagenes/${sat.imagen}` : 'imagenes/default.jpg';
         panelEstado.textContent = esIngles && sat.estadoEn ? sat.estadoEn : sat.estado;
         panelAltitud.textContent = sat.altitud;
         panelVelocidad.textContent = sat.velocidadKm;

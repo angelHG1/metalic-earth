@@ -655,3 +655,11 @@ model-viewer:active {
     padding: 20px;
     margin-top: 10px;
 }
+
+.panel-imagen-container {
+    width:100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
