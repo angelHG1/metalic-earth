@@ -73,8 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 3,
-            nombre: 'Satélite 3',
-            nombreEn: 'Satellite 3',
+            nombreEn: 'ATS 1',
             nombre: 'ATS 1',
             radioMult: 1.34,
             inclinacion: 1.05,     // ~60°
@@ -87,16 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
             periodo: '98.8 min',
             estado: 'En órbita activa',
             estadoEn: 'In active orbit',
-            agencia: 'NASA / NOAA',
-            agenciaEn: 'NASA / NOAA',
-            lanzamiento: '12 de marzo 1974',
-            lanzamientoEn: 'March 12, 1974',
-            proposito: 'Geodesia y mapeo topográfico global.',
-            propositoEn: 'Geodesy and global topographic mapping.',
-            descripcion: 'Misión orbital para mediciones de precisión del geoide terrestre y análisis de anomalías gravitatorias superficiales.',
-            descripcionEn: 'Orbital mission for precision measurements of the Earth geoid and surface gravity anomaly analysis.'
             agencia: 'NASA / Estados Unidos',
+            agenciaEn: 'NASA / EEUU',
             lanzamiento: '7 de diciembre 1966',
+            lanzamientoEn: 'december 7, 1966',
             proposito: 'Geodesia y mapeo topográfico',
             descripcion: 'Mision ciencias de la tierra y fisica espcial. Su funcion fue servir para pruebas de nuevos conceptos en el diseño y propulsion de naves espaciales, y estabilizacion, recoger imagenes de alta calidad de la cobertura nubosa y retrasmitir datos meteorologicos mediante un satelite sincronico a la tierra,  realizar mediciones del entorno  aeroespacial y probar sistemas de comunicacion mejorados'
         },
