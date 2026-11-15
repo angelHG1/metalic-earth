@@ -72,14 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '98.2°',
             periodo: '98.8 min',
             estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
+            agencia: 'NASA / Estados Unidos',
+            lanzamiento: '7 de diciembre 1966',
             proposito: 'Geodesia y mapeo topográfico',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            descripcion: 'Mision ciencias de la tierra y fisica espcial. Su funcion fue servir para pruebas de nuevos conceptos en el diseño y propulsion de naves espaciales, y estabilizacion, recoger imagenes de alta calidad de la cobertura nubosa y retrasmitir datos meteorologicos mediante un satelite sincronico a la tierra,  realizar mediciones del entorno  aeroespacial y probar sistemas de comunicacion mejorados'
         },
         {
             id: 4,
-            nombre: 'LANDSAT 1',
+            nombre: 'Satélite 4',
             radioMult: 1.22,
             inclinacion: -0.40,    // ~-23°
             ascension: 1.95,
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 5,
-            nombre: 'TDRS-A',
+            nombre: 'Satélite 5',
             radioMult: 1.42,
             inclinacion: 1.25,     // ~72° (casi polar)
             ascension: 2.60,
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 6,
-            nombre: 'Galex',
+            nombre: 'Satélite 6',
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
             ascension: 3.25,
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 7,
-            nombre: 'FAST',
+            nombre: 'Satélite 7',
             radioMult: 1.46,
             inclinacion: 0.55,     // ~31°
             ascension: 3.90,
