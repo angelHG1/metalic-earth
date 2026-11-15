@@ -3,48 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metallic Earth - Acerca de</title>
     <link rel="stylesheet" href="stilo.css">
 </head>
+
 <body>
-     <!-- fondo-->
+    <!-- fondo-->
     <div class="fondo"></div>
     <div class="capa-fondo"></div>
+
     <!-- ENCABEZADO -->
     <header>
         <h1>Metallic Earth</h1>
         <nav>
-            <a href="index.html">Inicio</a>
-            <a href="AcercaDe.html" class="seleccionado">Acerca de</a>
-            <a href="ayuda.html">Ayuda</a>
-            <a href="configuración.html">Configuración</a>   
+            <a href="index.html" data-i18n="navInicio">Inicio</a>
+            <a href="AcercaDe.html" class="seleccionado" data-i18n="navAcerca">Acerca de</a>
+            <a href="ayuda.html" data-i18n="navAyuda">Ayuda</a>
+            <a href="configuración.html" data-i18n="navConfig">Configuración</a>
+            <button id="btn-idioma-nav" class="btn-idioma-nav" type="button" aria-label="Cambiar idioma">
+                <span class="icono-nav-globo">🌐</span>
+                <span id="texto-idioma-nav">EN</span>
+            </button>
         </nav>
     </header>
-<div class="Quees">
-    <div class="CajaTexto">
-        <h2>¿Qué es metalic earth?</h2>
-        <p>Somos una plataforma para visualizar información respecto a objetos inactivos o abandonados
-        que se encuentran en la atmosfera -Abandonados pero no olvidados-
-        </p>
-    </div>
-    <div class="cajaImagen">
-        <img src="imagenes/saletite abandonado2.jpg" alt="Satelite Abandonado">
-    </div>
-</div>
 
-<div class="Objetivo">
-    <h2>Nuestro objetivo</h2>
-        <p>Facilitar la observación y comprensión de la ubicación de objetos mediante visualización tridimensional.</p>
-</div>
-<div class="Desarrollado">
-    <h2>Desarrollado para</h2>
-        <p>Hackaton NASA Space App Challenge 2026 - Republica Dominicana.</p>
-</div>
-    
+    <div class="Quees">
+        <div class="CajaTexto">
+            <h2 data-i18n="acercaQueEs">¿Qué es metallic earth?</h2>
+            <p data-i18n="acercaQueEsTxt">Somos una plataforma para visualizar información respecto a objetos inactivos o abandonados
+            que se encuentran en la atmósfera -Abandonados pero no olvidados-
+            </p>
+        </div>
+        <div class="cajaImagen">
+            <img src="imagenes/saletite abandonado2.jpg" alt="Satelite Abandonado">
+        </div>
+    </div>
+
+    <div class="Objetivo">
+        <h2 data-i18n="acercaObjetivo">Nuestro objetivo</h2>
+        <p data-i18n="acercaObjetivoTxt">Facilitar la observación y comprensión de la ubicación de objetos mediante visualización tridimensional.</p>
+    </div>
+
+    <div class="Desarrollado">
+        <h2 data-i18n="acercaDesarrollado">Desarrollado para</h2>
+        <p data-i18n="acercaDesarrolladoTxt">Hackaton NASA Space Apps Challenge 2026 - República Dominicana.</p>
+    </div>
+
+    <!-- Script de internacionalización global -->
+    <script src="traductor.js"></script>
 </body>
-
-
 
 </html>

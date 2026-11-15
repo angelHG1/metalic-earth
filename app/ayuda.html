@@ -3,37 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metallic Earth - Ayuda</title>
     <link rel="stylesheet" href="stilo.css">
 </head>
+
 <body>
-     <!-- fondo-->
+    <!-- fondo-->
     <div class="fondo"></div>
     <div class="capa-fondo"></div>
+
     <!-- ENCABEZADO -->
     <header>
         <h1>Metallic Earth</h1>
         <nav>
-            <a href="index.html">Inicio</a>
-            <a href="AcercaDe.html">Acerca de</a>
-            <a href="ayuda.html" class="seleccionado">Ayuda</a>
-            <a href="configuración.html">Configuración</a>   
+            <a href="index.html" data-i18n="navInicio">Inicio</a>
+            <a href="AcercaDe.html" data-i18n="navAcerca">Acerca de</a>
+            <a href="ayuda.html" class="seleccionado" data-i18n="navAyuda">Ayuda</a>
+            <a href="configuración.html" data-i18n="navConfig">Configuración</a>
+            <button id="btn-idioma-nav" class="btn-idioma-nav" type="button" aria-label="Cambiar idioma">
+                <span class="icono-nav-globo">🌐</span>
+                <span id="texto-idioma-nav">EN</span>
+            </button>
         </nav>
     </header>
-<div class="Funcionamiento">
-    
-        <h2>¿Como funciona la página?</h2>
-        <p>En la pagina de inicio hay un modelo 3D interactivo de la tierra con satelites fuera de servicio en la actualidad
-            así como una lista lateral con los mismos. Al darle click a un objeto de la lista se abré un panel con los detalles
-            de este, desde su nombre, compañia a la que pertenece, hasta su año de lanzamiento y año de terminación.
-        </p>
-</div>
 
-<div class="Contacto">
-    <h2>Contacta al equipo</h2>
-        <p>En caso de requirir información adicional o tener dudas respecto a la pagina puede contactar con nuestro equipo "Radalaxy" </p>
-</div>
+    <div class="Funcionamiento">
+        <h2 data-i18n="ayudaFuncionamiento">¿Cómo funciona la página?</h2>
+        <p data-i18n="ayudaFuncionamientoTxt">En la página de inicio hay un modelo 3D interactivo de la Tierra con satélites fuera de servicio en la actualidad, así como una lista lateral con los mismos. Al darle clic a un objeto de la lista se abre un panel con los detalles del mismo, desde su nombre y agencia a la que pertenece, hasta sus parámetros orbitales y propósito científico.
+        </p>
+    </div>
+
+    <div class="Contacto">
+        <h2 data-i18n="ayudaContacto">Contacta al equipo</h2>
+        <p data-i18n="ayudaContactoTxt">En caso de requerir información adicional o tener dudas respecto a la plataforma, puedes contactar con nuestro equipo "Radalaxy".</p>
+    </div>
+
+    <!-- Script de internacionalización global -->
+    <script src="traductor.js"></script>
 </body>
+
 </html>

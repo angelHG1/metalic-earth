@@ -96,6 +96,49 @@ header nav a:hover {
     background-color: #0960E1;
 }
 
+/* Botón global de traducción en el encabezado */
+.btn-idioma-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(9, 96, 225, 0.25);
+    border: 1px solid #00f0ff;
+    color: #FFFFFF;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    font-family: inherit;
+    margin-left: 6px;
+}
+
+.btn-idioma-nav:hover {
+    background: #0960E1;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.45);
+    transform: translateY(-1px);
+}
+
+.btn-idioma-nav:active {
+    transform: translateY(0);
+}
+
+.btn-idioma-nav .icono-nav-globo {
+    font-size: 15px;
+}
+
+.btn-idioma-nav .badge-nav-lang {
+    background: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
 /* Contenido principal */
 
 .contenedor {
