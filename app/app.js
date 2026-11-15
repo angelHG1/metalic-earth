@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 1,
             nombre: 'TIROS 1',
             nombreEn: 'TIROS 1',
-            imagen: 'TIROS 1.jpg',  
+            imagen: 'TIROS-1.jpg',  
             radioMult: 1.20,
             inclinacion: 0.30,     // radianes (~17°)
             ascension: 0.0,        // orientación del plano orbital
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 2,
             nombre: 'SYNCOM 1',
             nombreEn: 'SYNCOM 1',
-            imagen: 'SYNCOM-11.jpg',
+            imagen: 'SYNCOM-1.png',
             radioMult: 1.26,
             inclinacion: -0.75,    // ~-43°
             ascension: 0.65,
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 3,
             nombreEn: 'ATS 1',
-            imagen: 'ATS 1.jpg',
+            imagen: 'ATS-1.jpg',
             nombre: 'ATS 1',
             radioMult: 1.34,
             inclinacion: 1.05,     // ~60°
@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 4,
-            nombre: 'Landsat 1',
+            nombre: 'LANDSAT 1',
             nombreEn: 'Landsat 1',
-            imagen: 'Landsat 1.jpg',
+            imagen: 'Landsat-1.jpg',
             radioMult: 1.22,
             inclinacion: -0.40,    // ~-23°
             ascension: 1.95,
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 5,
             nombre: 'TDRS-A',
-            imagen: 'TDRS-A.jpg',
+            imagen: 'TDRS-A.png',
             nombreEn: 'TDRS-A',
             radioMult: 1.42,
             inclinacion: 1.25,     // ~72° (casi polar)
@@ -153,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 6,
-            nombre: 'Galex',
-            imagen: 'FAST.jpg',
-            nombreEn: 'Galex',
+            nombre: 'GALEX',
+            imagen: 'GALEX.png',
+            nombreEn: 'GALEX',
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
             ascension: 3.25,
@@ -177,9 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 7,
-            nombre: 'Fast',
-            imagen: 'satelite7.jpg',
-            nombreEn: 'Fast',
+            nombre: 'FAST',
+            imagen: 'FAST.jpeg',
+            nombreEn: 'FAST',
             radioMult: 1.46,
             inclinacion: 0.55,     // ~31°
             ascension: 3.90,
@@ -201,8 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 8,
-            nombre: 'Nimbus 3',
-            nombreEn: 'Nimbus 3',
+            nombre: 'NIMBUS 3',
+            imagen: 'Nimbus-3.jpg',
+            nombreEn: 'NIMBUS 3',
             radioMult: 1.36,
             inclinacion: -1.20,    // ~-69°
             ascension: 4.55,
@@ -227,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 9,
             nombre: 'QuikSCAT',
             nombreEn: 'QuikSCAT',
+            imagen: 'QUICKSCAT.png',
             radioMult: 1.50,
             inclinacion: 0.20,     // ~11° (casi ecuatorial)
             ascension: 5.20,
@@ -249,8 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 10,
-            nombre: 'Satélite 10',
-            nombreEn: 'Satellite 10',
+            nombre: 'EO-1',
+            nombreEn: 'EO-1',
+            imagen: 'EO.jpg',
             radioMult: 1.22,
             inclinacion: 0.85,     // ~49°
             ascension: 5.85,
