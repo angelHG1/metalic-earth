@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.66 km/s',
             inclinacionGrad: '51.6°',
             periodo: '92.9 min',
-            estado: 'En órbita activa',
-            agencia: 'NASA / Estados Unidos',
+            estado: 'En órbita, no operacional',
+            agencia: 'NASA- Oficina de aplicaciones de ciencias espaciales / Estados Unidos',
             lanzamiento: '13 de mayo 1905',
             proposito: 'Fue diseñado para probar la viabilidad de obtener y utilizar imagenes de television de cobertura nubosa desde satelites',
             descripcion: 'Satelite de observacion por television  e infrarrojos.'
@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.58 km/s',
             inclinacionGrad: '97.4°',
             periodo: '95.6 min',
-            estado: 'En órbita activa',
-            agencia: 'NASA / Estados Unidos',
+            estado: 'En órbita, no operacional',
+            agencia: 'NASA- Oficina de aplicaciones espaciales / Estados Unidos',
             lanzamiento: '14 de febrero 1963',
             proposito: 'satélite de comunicaciones geosíncrona',
             descripcion: 'Su misión era servir como la primera prueba de un satélite de comunicaciones en órbita geosíncrona.'
@@ -71,15 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.50 km/s',
             inclinacionGrad: '98.2°',
             periodo: '98.8 min',
-            estado: 'En órbita activa',
-            agencia: 'NASA / Estados Unidos',
+            estado: 'En órbita, no operacional',
+            agencia: 'NASA- Oficina de aplicaciones de ciencias espaciales / Estados Unidos',
             lanzamiento: '7 de diciembre 1966',
-            proposito: 'Geodesia y mapeo topográfico',
+            proposito: 'Satelite de tecnologia de aplicaciones',
             descripcion: 'Mision ciencias de la tierra y fisica espcial. Su funcion fue servir para pruebas de nuevos conceptos en el diseño y propulsion de naves espaciales, y estabilizacion, recoger imagenes de alta calidad de la cobertura nubosa y retrasmitir datos meteorologicos mediante un satelite sincronico a la tierra,  realizar mediciones del entorno  aeroespacial y probar sistemas de comunicacion mejorados'
         },
         {
             id: 4,
-            nombre: 'Satélite 4',
+            nombre: 'Landsat 1',
             radioMult: 1.22,
             inclinacion: -0.40,    // ~-23°
             ascension: 1.95,
@@ -89,15 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.61 km/s',
             inclinacionGrad: '35.0°',
             periodo: '94.6 min',
-            estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Telecomunicaciones y retransmisión',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            estado: 'En órbita, no operacional',
+            agencia: 'NASA- Oficina de aplicaciones de ciencias espaciales y terrestres / Estados Unidos',
+            lanzamiento: '23 de julio 1972',
+            proposito: 'Satelite de tecnologia de recursos terrestres',
+            descripcion: 'Su mision era obtener informacion sobre recursos agricolas, forestales, geologia y recursos minerales, hidroloia y recuerson hidricos, geografia, cartografia, contaminacion ambiental, oceeanografia y recursos marinos, asi como fenomenos meteorologicos'
         },
         {
             id: 5,
-            nombre: 'Satélite 5',
+            nombre: 'TDRS-A',
             radioMult: 1.42,
             inclinacion: 1.25,     // ~72° (casi polar)
             ascension: 2.60,
@@ -107,15 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.44 km/s',
             inclinacionGrad: '82.5°',
             periodo: '101.2 min',
-            estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Estudio de radiación solar y clima espacial',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            estado: 'En órbita, no operacional',
+            agencia: 'NASA- Oficina de seguimiento y datos / Estados Unidos',
+            lanzamiento: '5 de abril 1983',
+            proposito: 'Satélite de seguimiento y retransmisión de datos',
+            descripcion: 'Su mision era servir como intermediario para la transmision de datos entre las naves espaciales de los usuarios y la tierra.'
         },
         {
             id: 6,
-            nombre: 'Satélite 6',
+            nombre: 'Galex',
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
             ascension: 3.25,
@@ -125,15 +125,15 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.54 km/s',
             inclinacionGrad: '66.0°',
             periodo: '97.3 min',
-            estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Oceanografía y recursos hídricos',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            estado: 'En órbita, no operacional',
+            agencia: 'NASA- Oficina de ciencias espaciales / Estados Unidos',
+            lanzamiento: '28 de abril 2003',
+            proposito: 'Trabajaba como telescopio espacial ultravioleta',
+            descripcion: 'Su mision era explorar el origen de las galaxias, asi como el origen de las estrella y los elementos pesado.'
         },
         {
             id: 7,
-            nombre: 'Satélite 7',
+            nombre: 'Fast',
             radioMult: 1.46,
             inclinacion: 0.55,     // ~31°
             ascension: 3.90,
@@ -143,11 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.40 km/s',
             inclinacionGrad: '53.0°',
             periodo: '103.0 min',
-            estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Astrofísica y telescopio orbital',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            estado: 'En órbita, no operacional',
+            agencia: 'NASA- Oficina de ciencias espaciales / Estados Unidos',
+            lanzamiento: '21 de agosto 1996',
+            proposito: 'Satelite explorer',
+            descripcion: 'Su mision era investigar la fisica del plasma de los fenomenos aurorales con una resolucion temporal y espacial extremadamente alta, empleando un conjuto completo de instrumentos para medir particulasEspacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
         },
         {
             id: 8,
