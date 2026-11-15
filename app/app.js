@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const panelLanzamiento = document.getElementById('panel-lanzamiento');
     const panelProposito = document.getElementById('panel-proposito');
 
-    // Configuración de los 10 satélites con parámetros orbitales y telemetría
+    // Configuración de los 10 satélites con parámetros orbitales (velocidad pausada y majestuosa) y telemetría
     const SATELITES = [
         {
             id: 1,
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.20,
             inclinacion: 0.30,     // radianes (~17°)
             ascension: 0.0,        // orientación del plano orbital
-            velocidad: 0.28,       // rotación orbital en rad/s
+            velocidad: 0.055,      // velocidad pausada y suave
             fase: 0.0,             // punto inicial distribuido
             altitud: '420 km',
             velocidadKm: '7.66 km/s',
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.26,
             inclinacion: -0.75,    // ~-43°
             ascension: 0.65,
-            velocidad: 0.24,
+            velocidad: 0.048,
             fase: 0.63,
             altitud: '550 km',
             velocidadKm: '7.58 km/s',
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.34,
             inclinacion: 1.05,     // ~60°
             ascension: 1.30,
-            velocidad: 0.22,
+            velocidad: 0.042,
             fase: 1.26,
             altitud: '705 km',
             velocidadKm: '7.50 km/s',
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.22,
             inclinacion: -0.40,    // ~-23°
             ascension: 1.95,
-            velocidad: 0.30,
+            velocidad: 0.060,
             fase: 1.88,
             altitud: '500 km',
             velocidadKm: '7.61 km/s',
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.42,
             inclinacion: 1.25,     // ~72° (casi polar)
             ascension: 2.60,
-            velocidad: 0.20,
+            velocidad: 0.038,
             fase: 2.51,
             altitud: '820 km',
             velocidadKm: '7.44 km/s',
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
             ascension: 3.25,
-            velocidad: 0.26,
+            velocidad: 0.050,
             fase: 3.14,
             altitud: '630 km',
             velocidadKm: '7.54 km/s',
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.46,
             inclinacion: 0.55,     // ~31°
             ascension: 3.90,
-            velocidad: 0.19,
+            velocidad: 0.040,
             fase: 3.77,
             altitud: '900 km',
             velocidadKm: '7.40 km/s',
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.36,
             inclinacion: -1.20,    // ~-69°
             ascension: 4.55,
-            velocidad: 0.23,
+            velocidad: 0.045,
             fase: 4.40,
             altitud: '750 km',
             velocidadKm: '7.48 km/s',
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.50,
             inclinacion: 0.20,     // ~11° (casi ecuatorial)
             ascension: 5.20,
-            velocidad: 0.18,
+            velocidad: 0.035,
             fase: 5.03,
             altitud: '1050 km',
             velocidadKm: '7.32 km/s',
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             radioMult: 1.22,
             inclinacion: 0.85,     // ~49°
             ascension: 5.85,
-            velocidad: 0.29,
+            velocidad: 0.052,
             fase: 5.65,
             altitud: '480 km',
             velocidadKm: '7.62 km/s',
@@ -303,7 +303,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const y = y1;
         const z = -x1 * Math.sin(sat.ascension) + z1 * Math.cos(sat.ascension);
 
-        return `${x.toFixed(2)}m ${y.toFixed(2)}m ${z.toFixed(2)}m`;
+        return {
+            x,
+            y,
+            z,
+            posStr: `${x.toFixed(2)}m ${y.toFixed(2)}m ${z.toFixed(2)}m`
+        };
+    }
+
+    // Obtener el vector unitario de la cámara hacia el centro de la Tierra
+    function obtenerVectorCamara() {
+        if (visorTierra && typeof visorTierra.getCameraOrbit === 'function') {
+            try {
+                const orbit = visorTierra.getCameraOrbit();
+                if (orbit) {
+                    const sinPhi = Math.sin(orbit.phi);
+                    return {
+                        x: sinPhi * Math.sin(orbit.theta),
+                        y: Math.cos(orbit.phi),
+                        z: sinPhi * Math.cos(orbit.theta)
+                    };
+                }
+            } catch (err) {}
+        }
+        // Vector por defecto mirando desde +Z hacia el origen
+        return { x: 0, y: 0, z: 1 };
     }
 
     // 5. Bucle continuo de animación orbital en tiempo real
@@ -311,9 +335,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animarOrbitas(tiempoActual) {
         const segundos = (tiempoActual - tiempoInicio) / 1000;
+        const cam = obtenerVectorCamara();
 
         satelitesElements.forEach(({ sat, slotName, element }) => {
-            const posStr = calcularPosicionOrbital(sat, segundos);
+            const { x, y, z, posStr } = calcularPosicionOrbital(sat, segundos);
 
             // Método oficial de model-viewer para mover hotspots en tiempo real
             if (visorTierra && typeof visorTierra.updateHotspot === 'function') {
@@ -325,6 +350,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Atributo fallback para compatibilidad con CSS y selectores
             element.dataset.position = posStr;
+
+            // Oclusión dinámica respecto a la cámara:
+            // Proyección a lo largo del eje de visión de la cámara
+            const dProfundidad = x * cam.x + y * cam.y + z * cam.z;
+
+            // Si está en el hemisferio posterior (detrás del centro respecto a la cámara)
+            if (dProfundidad < 0) {
+                // Distancia perpendicular al eje de la cámara (radio aparente en pantalla)
+                const dPerpendicularSq = Math.max(0, (x * x + y * y + z * z) - (dProfundidad * dProfundidad));
+                const radioTierraSq = radioTierra * radioTierra;
+
+                // Si queda dentro del contorno de la Tierra, se oculta o vuelve transparente
+                if (dPerpendicularSq < radioTierraSq * 0.98) {
+                    element.classList.add('detras-tierra');
+                } else {
+                    element.classList.remove('detras-tierra');
+                }
+            } else {
+                // Hemisferio frontal: completamente visible y nítido
+                element.classList.remove('detras-tierra');
+            }
         });
 
         requestAnimationFrame(animarOrbitas);

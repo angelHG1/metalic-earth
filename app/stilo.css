@@ -248,7 +248,15 @@ model-viewer:active {
     touch-action: pan-x pan-y;
     user-select: none;
     opacity: 1;
+    transition: opacity 0.35s ease, filter 0.35s ease;
     z-index: 20;
+}
+
+/* Oclusión dinámica: se vuelve transparente cuando orbita por detrás de la Tierra */
+.satelite-hotspot.detras-tierra {
+    opacity: 0.15;
+    pointer-events: none;
+    filter: blur(0.6px);
 }
 
 /* Etiqueta con el nombre pequeño arriba - Alta visibilidad */
