@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const SATELITES = [
         {
             id: 1,
-            nombre: 'Satélite 1',
+            nombre: 'TIROS 1',
             radioMult: 1.20,
             inclinacion: 0.30,     // radianes (~17°)
             ascension: 0.0,        // orientación del plano orbital
@@ -36,14 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '51.6°',
             periodo: '92.9 min',
             estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Observación e investigación científica',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            agencia: 'NASA / Estados Unidos',
+            lanzamiento: '13 de mayo 1905',
+            proposito: 'Fue diseñado para probar la viabilidad de obtener y utilizar imagenes de television de cobertura nubosa desde satelites',
+            descripcion: 'Satelite de observacion por television  e infrarrojos.'
         },
         {
             id: 2,
-            nombre: 'Satélite 2',
+            nombre: 'SYNCOM 1',
             radioMult: 1.26,
             inclinacion: -0.75,    // ~-43°
             ascension: 0.65,
@@ -54,10 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '97.4°',
             periodo: '95.6 min',
             estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Monitoreo ambiental y climático',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            agencia: 'NASA / Estados Unidos',
+            lanzamiento: '14 de febrero 1963',
+            proposito: 'satélite de comunicaciones geosíncrona',
+            descripcion: 'Su misión era servir como la primera prueba de un satélite de comunicaciones en órbita geosíncrona.'
         },
         {
             id: 3,
