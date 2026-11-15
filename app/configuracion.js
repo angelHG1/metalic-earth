@@ -112,7 +112,7 @@
         const chkRotacion = document.getElementById('cfg-rotacion');
         if (chkRotacion) estadoActual.rotacionAuto = chkRotacion.checked;
 
-        const chkEtiquetas = document.getElementById('cfg-etiquetas');
+        const chkEtiquetas = document.getElementById('no iquetas');
         if (chkEtiquetas) estadoActual.etiquetasOrbitas = chkEtiquetas.checked;
 
         const selFondo = document.getElementById('cfg-fondo');
@@ -144,7 +144,7 @@
     }
 
     /**
-     * Muestra notificación toast sin emojis
+     * Muestra notificación toast
      */
     function mostrarToast(mensaje) {
         const toast = document.getElementById('toast-notificacion');
