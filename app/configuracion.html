@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="docTitleConfig">Metallic Earth - Configuración</title>
+    <link rel="stylesheet" href="stilo.css">
+    <link rel="stylesheet" href="configuracion.css">
+</head>
+
+<body>
+    <!-- fondo-->
+    <div class="fondo"></div>
+    <div class="capa-fondo"></div>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Metallic Earth</h1>
+        <nav>
+            <a href="index.html" data-i18n="navInicio">Inicio</a>
+            <a href="AcercaDe.html" data-i18n="navAcerca">Acerca de</a>
+            <a href="ayuda.html" data-i18n="navAyuda">Ayuda</a>
+            <a href="configuración.html" class="seleccionado" data-i18n="navConfig">Configuración</a>
+            <button id="btn-idioma-nav" class="btn-idioma-nav" type="button" aria-label="Cambiar idioma">
+                <span id="texto-idioma-nav">EN</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- UNICO RECUADRO DE CONFIGURACION (Estilo AcercaDe.html) -->
+    <div class="Configuracion">
+        <h2 data-i18n="configTitulo">Configuración</h2>
+        <p class="subtitulo-config" data-i18n="configSubtitulo">Ajustes básicos del sistema y preferencias de visualización.</p>
+
+        <div class="config-filas">
+
+            <!-- Fila 1: Idioma de la página y botón de traducción -->
+            <div class="config-fila">
+                <div class="config-info">
+                    <span class="config-label" data-i18n="optIdiomaTitulo">Idioma de la página</span>
+                    <span class="config-desc" data-i18n="optIdiomaDesc">Selecciona el idioma principal de la plataforma.</span>
+                </div>
+                <div class="grupo-idioma-simple">
+                    <button type="button" class="btn-idioma-opcion activo" id="btn-lang-es" data-i18n="btnEs">Español</button>
+                    <button type="button" class="btn-idioma-opcion" id="btn-lang-en" data-i18n="btnEn">English</button>
+                    <button type="button" class="btn-traducir-simple" id="btn-traductor-principal">
+                        <span id="btn-traductor-texto">Cambiar a Inglés</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fila 2: Rotación automática -->
+            <div class="config-fila">
+                <div class="config-info">
+                    <span class="config-label" data-i18n="optRotacionTitulo">Rotación automática de la Tierra</span>
+                    <span class="config-desc" data-i18n="optRotacionDesc">Girar automáticamente el modelo 3D cuando esté inactivo.</span>
+                </div>
+                <label class="switch" aria-label="Rotación automática">
+                    <input type="checkbox" id="cfg-rotacion" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Fila 3: Etiquetas flotantes -->
+            <div class="config-fila">
+                <div class="config-info">
+                    <span class="config-label" data-i18n="optEtiquetasTitulo">Etiquetas de satélites</span>
+                    <span class="config-desc" data-i18n="optEtiquetasDesc">Mostrar los nombres de satélites directamente sobre el visor.</span>
+                </div>
+                <label class="switch" aria-label="Etiquetas orbitales">
+                    <input type="checkbox" id="cfg-etiquetas" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Fila 4: Fondo espacial -->
+            <div class="config-fila">
+                <div class="config-info">
+                    <span class="config-label" data-i18n="optFondoTitulo">Fondo del espacio</span>
+                    <span class="config-desc" data-i18n="optFondoDesc">Fondo visual aplicado al simulador orbital.</span>
+                </div>
+                <select id="cfg-fondo" class="select-simple" aria-label="Fondo del espacio">
+                    <option value="video" data-i18n="fondoVideo">Video de estrellas</option>
+                    <option value="imagen" data-i18n="fondoImagen">Imagen fija del cosmos</option>
+                    <option value="oscuro" data-i18n="fondoOscuro">Fondo oscuro</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Pie del recuadro: Guardar y Restablecer -->
+        <div class="config-pie">
+            <button type="button" id="btn-restablecer-config" class="btn-restablecer-simple" data-i18n="btnRestablecer">Restablecer</button>
+            <button type="button" id="btn-guardar-config" class="btn-guardar-simple" data-i18n="btnGuardar">Guardar cambios</button>
+        </div>
+    </div>
+
+    <!-- Toast flotante simple sin emojis -->
+    <div id="toast-notificacion" class="toast-simple" role="status" aria-live="polite">
+        <span id="toast-mensaje">Configuración guardada con éxito.</span>
+    </div>
+
+    <!-- Scripts de internacionalización y configuración -->
+    <script src="traductor.js"></script>
+    <script src="configuracion.js"></script>
+</body>
+
+</html>

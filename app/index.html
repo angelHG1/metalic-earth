@@ -30,10 +30,13 @@
     <header>
         <h1>Metallic Earth</h1>
         <nav>
-            <a href="index.html" class="seleccionado">Inicio</a>
-            <a href="AcercaDe.html">Acerca de</a>
-            <a href="ayuda.html">Ayuda</a>
-            <a href="configuración.html">Configuración</a>   
+            <a href="index.html" class="seleccionado" data-i18n="navInicio">Inicio</a>
+            <a href="AcercaDe.html" data-i18n="navAcerca">Acerca de</a>
+            <a href="ayuda.html" data-i18n="navAyuda">Ayuda</a>
+            <a href="configuración.html" data-i18n="navConfig">Configuración</a>
+            <button id="btn-idioma-nav" class="btn-idioma-nav" type="button" aria-label="Cambiar idioma">
+                <span id="texto-idioma-nav">EN</span>
+            </button>
         </nav>
     </header>
 
@@ -42,7 +45,7 @@
 
         <!-- Lista de objetos -->
         <aside class="lista">
-            <h2>Lista de objetos</h2>
+            <h2 data-i18n="indexTituloObjetos">Lista de objetos</h2>
             <nav id="lista-objetos">
                 <!-- Se llena dinámicamente con los 10 satélites -->
             </nav>
@@ -112,7 +115,7 @@
         <aside class="panel-lateral" id="panel-lateral" aria-hidden="true">
             <div class="panel-header">
                 <div class="panel-tag-box">
-                    <span class="panel-tag">OBJETO ORBITAL</span>
+                    <span class="panel-tag" data-i18n="panelTag">OBJETO ORBITAL</span>
                     <h2 id="panel-titulo">Satélite 1</h2>
                 </div>
                 <button class="btn-cerrar-panel" id="btn-cerrar-panel" aria-label="Cerrar panel">&times;</button>
@@ -125,40 +128,40 @@
                 </div>
 
                 <div class="panel-seccion">
-                    <h3>Telemetría y Órbita</h3>
+                    <h3 data-i18n="panelTelemetria">Telemetría y Órbita</h3>
                     <div class="info-grid">
                         <div class="info-item">
-                            <span class="info-label">Altitud</span>
+                            <span class="info-label" data-i18n="panelAltitudLbl">Altitud</span>
                             <span class="info-valor" id="panel-altitud">550 km</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-label">Velocidad</span>
+                            <span class="info-label" data-i18n="panelVelocidadLbl">Velocidad</span>
                             <span class="info-valor" id="panel-velocidad">7.6 km/s</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-label">Inclinación</span>
+                            <span class="info-label" data-i18n="panelInclinacionLbl">Inclinación</span>
                             <span class="info-valor" id="panel-inclinacion">51.6°</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-label">Periodo</span>
+                            <span class="info-label" data-i18n="panelPeriodoLbl">Periodo</span>
                             <span class="info-valor" id="panel-periodo">95 min</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="panel-seccion">
-                    <h3>Información Científica</h3>
+                    <h3 data-i18n="panelCientifica">Información Científica</h3>
                     <p id="panel-descripcion" class="panel-descripcion">
                         Espacio preparado para la información científica, misión, objetivos e instrumental de este artefacto (datos oficiales de la NASA).
                     </p>
                 </div>
 
                 <div class="panel-seccion">
-                    <h3>Detalles de la Misión</h3>
+                    <h3 data-i18n="panelMision">Detalles de la Misión</h3>
                     <ul class="panel-detalles-lista">
-                        <li><strong>Agencia:</strong> <span id="panel-agencia">Por proporcionar</span></li>
-                        <li><strong>Lanzamiento:</strong> <span id="panel-lanzamiento">Por proporcionar</span></li>
-                        <li><strong>Propósito:</strong> <span id="panel-proposito">Investigación científica y monitoreo</span></li>
+                        <li><strong data-i18n="panelAgenciaLbl">Agencia:</strong> <span id="panel-agencia">Por proporcionar</span></li>
+                        <li><strong data-i18n="panelLanzamientoLbl">Lanzamiento:</strong> <span id="panel-lanzamiento">Por proporcionar</span></li>
+                        <li><strong data-i18n="panelPropositoLbl">Propósito:</strong> <span id="panel-proposito">Investigación científica y monitoreo</span></li>
                     </ul>
                 </div>
             </div>
@@ -166,7 +169,8 @@
 
     </main>
 
-    <!-- vinculacion con el javascript-->
+    <!-- Vinculación de scripts de internacionalización y simulación 3D -->
+    <script src="traductor.js"></script>
     <script src="app.js"></script>
 </body>
 

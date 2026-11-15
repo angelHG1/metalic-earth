@@ -21,11 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const panelLanzamiento = document.getElementById('panel-lanzamiento');
     const panelProposito = document.getElementById('panel-proposito');
 
-    // Configuración de los 10 satélites con parámetros orbitales (velocidad pausada y majestuosa) y telemetría
+    // Configuración de los 10 satélites con parámetros orbitales y telemetría bilingüe
     const SATELITES = [
         {
             id: 1,
             nombre: 'TIROS 1',
+            nombreEn: 'TIROS 1',
             radioMult: 1.20,
             inclinacion: 0.30,     // radianes (~17°)
             ascension: 0.0,        // orientación del plano orbital
@@ -36,14 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '51.6°',
             periodo: '92.9 min',
             estado: 'En órbita, no operacional',
+            estadoEn: 'In active orbit',
             agencia: 'NASA- Oficina de aplicaciones de ciencias espaciales / Estados Unidos',
-            lanzamiento: '13 de mayo 1905',
-            proposito: 'Fue diseñado para probar la viabilidad de obtener y utilizar imagenes de television de cobertura nubosa desde satelites',
-            descripcion: 'Satelite de observacion por television  e infrarrojos.'
+            agenciaEn: 'NASA / United States',
+            lanzamiento: '1 de abril 1960',
+            lanzamientoEn: 'April 1, 1960',
+            proposito: 'Diseñado para probar la viabilidad de obtener y utilizar imágenes de televisión de cobertura nubosa desde satélites.',
+            propositoEn: 'Designed to test the feasibility of obtaining and using television cloud cover images from satellites.',
+            descripcion: 'Primer satélite meteorológico exitoso de la historia. Operó por televisión e infrarrojos para la observación de sistemas climáticos.',
+            descripcionEn: 'First successful weather satellite in history. Operated television and infrared cameras for observing weather systems.'
         },
         {
             id: 2,
             nombre: 'SYNCOM 1',
+            nombreEn: 'SYNCOM 1',
             radioMult: 1.26,
             inclinacion: -0.75,    // ~-43°
             ascension: 0.65,
@@ -53,14 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.58 km/s',
             inclinacionGrad: '97.4°',
             periodo: '95.6 min',
-            estado: 'En órbita, no operacional',
-            agencia: 'NASA- Oficina de aplicaciones espaciales / Estados Unidos',
+            estado: 'En órbita activa',
+            agencia: 'NASA / Estados Unidos',
             lanzamiento: '14 de febrero 1963',
-            proposito: 'satélite de comunicaciones geosíncrona',
-            descripcion: 'Su misión era servir como la primera prueba de un satélite de comunicaciones en órbita geosíncrona.'
+            lanzamientoEn: 'February 14, 1963',
+            proposito: 'Satélite de comunicaciones en órbita geosíncrona.',
+            propositoEn: 'Geosynchronous communications satellite.',
+            descripcion: 'Su misión era servir como la primera prueba de un satélite de comunicaciones en órbita geosíncrona terrestre.',
+            descripcionEn: 'Its mission was to serve as the pioneer test of an active communications satellite in geosynchronous orbit.'
         },
         {
             id: 3,
+            nombreEn: 'ATS 1',
             nombre: 'ATS 1',
             radioMult: 1.34,
             inclinacion: 1.05,     // ~60°
@@ -72,9 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '98.2°',
             periodo: '98.8 min',
             estado: 'En órbita, no operacional',
+            estadoEn: 'In active orbit',
             agencia: 'NASA- Oficina de aplicaciones de ciencias espaciales / Estados Unidos',
+            agenciaEn: 'NASA / EEUU',
             lanzamiento: '7 de diciembre 1966',
-            proposito: 'Satelite de tecnologia de aplicaciones',
+            proposito: 'Geodesia y mapeo topográfico',
             descripcion: 'Mision ciencias de la tierra y fisica espcial. Su funcion fue servir para pruebas de nuevos conceptos en el diseño y propulsion de naves espaciales, y estabilizacion, recoger imagenes de alta calidad de la cobertura nubosa y retrasmitir datos meteorologicos mediante un satelite sincronico a la tierra,  realizar mediciones del entorno  aeroespacial y probar sistemas de comunicacion mejorados'
         },
         {
@@ -89,15 +102,21 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.61 km/s',
             inclinacionGrad: '35.0°',
             periodo: '94.6 min',
-            estado: 'En órbita, no operacional',
-            agencia: 'NASA- Oficina de aplicaciones de ciencias espaciales y terrestres / Estados Unidos',
-            lanzamiento: '23 de julio 1972',
-            proposito: 'Satelite de tecnologia de recursos terrestres',
-            descripcion: 'Su mision era obtener informacion sobre recursos agricolas, forestales, geologia y recursos minerales, hidroloia y recuerson hidricos, geografia, cartografia, contaminacion ambiental, oceeanografia y recursos marinos, asi como fenomenos meteorologicos'
+            estado: 'Inactivo / Fuera de servicio',
+            estadoEn: 'Decommissioned / Inactive',
+            agencia: 'NASA / DoD',
+            agenciaEn: 'NASA / DoD',
+            lanzamiento: '29 de septiembre 1981',
+            lanzamientoEn: 'September 29, 1981',
+            proposito: 'Telecomunicaciones y retransmisión de datos orbitales.',
+            propositoEn: 'Telecommunications and orbital data relay.',
+            descripcion: 'Plataforma experimental de enlaces inter-satelitales y transmisión de telemetría científica en banda alta.',
+            descripcionEn: 'Experimental platform for inter-satellite crosslinks and high-band scientific telemetry transmission.'
         },
         {
             id: 5,
             nombre: 'TDRS-A',
+            nombreEn: 'Satellite 5',
             radioMult: 1.42,
             inclinacion: 1.25,     // ~72° (casi polar)
             ascension: 2.60,
@@ -107,15 +126,21 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.44 km/s',
             inclinacionGrad: '82.5°',
             periodo: '101.2 min',
-            estado: 'En órbita, no operacional',
-            agencia: 'NASA- Oficina de seguimiento y datos / Estados Unidos',
-            lanzamiento: '5 de abril 1983',
-            proposito: 'Satélite de seguimiento y retransmisión de datos',
-            descripcion: 'Su mision era servir como intermediario para la transmision de datos entre las naves espaciales de los usuarios y la tierra.'
+            estado: 'En órbita activa',
+            estadoEn: 'In active orbit',
+            agencia: 'NASA / CSA',
+            agenciaEn: 'NASA / CSA',
+            lanzamiento: '15 de junio 1989',
+            lanzamientoEn: 'June 15, 1989',
+            proposito: 'Estudio de radiación solar y clima espacial.',
+            propositoEn: 'Solar radiation and space weather research.',
+            descripcion: 'Monitoreo de vientos solares, partículas cargadas y perturbaciones geomagnéticas en la magnetosfera terrestre.',
+            descripcionEn: 'Monitoring solar winds, charged particles, and geomagnetic storms across Earth magnetosphere.'
         },
         {
             id: 6,
-            nombre: 'Galex',
+            nombre: 'Satélite 6',
+            nombreEn: 'Satellite 6',
             radioMult: 1.28,
             inclinacion: -0.90,    // ~-52°
             ascension: 3.25,
@@ -125,15 +150,15 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.54 km/s',
             inclinacionGrad: '66.0°',
             periodo: '97.3 min',
-            estado: 'En órbita, no operacional',
-            agencia: 'NASA- Oficina de ciencias espaciales / Estados Unidos',
-            lanzamiento: '28 de abril 2003',
-            proposito: 'Trabajaba como telescopio espacial ultravioleta',
-            descripcion: 'Su mision era explorar el origen de las galaxias, asi como el origen de las estrella y los elementos pesado.'
+            estado: 'En órbita activa',
+            agencia: 'NASA / Por definir',
+            lanzamiento: 'Por definir',
+            proposito: 'Oceanografía y recursos hídricos',
+            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
         },
         {
             id: 7,
-            nombre: 'Fast',
+            nombre: 'Satélite 7',
             radioMult: 1.46,
             inclinacion: 0.55,     // ~31°
             ascension: 3.90,
@@ -143,15 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.40 km/s',
             inclinacionGrad: '53.0°',
             periodo: '103.0 min',
-            estado: 'En órbita, no operacional',
-            agencia: 'NASA- Oficina de ciencias espaciales / Estados Unidos',
-            lanzamiento: '21 de agosto 1996',
-            proposito: 'Satelite explorer',
-            descripcion: 'Su mision era investigar la fisica del plasma de los fenomenos aurorales con una resolucion temporal y espacial extremadamente alta, empleando un conjuto completo de instrumentos para medir particulasEspacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            estado: 'En órbita activa',
+            agencia: 'NASA / Por definir',
+            lanzamiento: 'Por definir',
+            proposito: 'Astrofísica y telescopio orbital',
+            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
         },
         {
             id: 8,
             nombre: 'Satélite 8',
+            nombreEn: 'Satellite 8',
             radioMult: 1.36,
             inclinacion: -1.20,    // ~-69°
             ascension: 4.55,
@@ -162,14 +188,20 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '74.0°',
             periodo: '99.8 min',
             estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Composición atmosférica y gases de efecto invernadero',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            estadoEn: 'In active orbit',
+            agencia: 'NASA / JAXA',
+            agenciaEn: 'NASA / JAXA',
+            lanzamiento: '12 de septiembre 1991',
+            lanzamientoEn: 'September 12, 1991',
+            proposito: 'Composición atmosférica y gases de efecto invernadero.',
+            propositoEn: 'Atmospheric composition and greenhouse gases monitoring.',
+            descripcion: 'Sensor espectrométrico para medir la recuperación de la capa de ozono estratosférico y concentraciones de metano.',
+            descripcionEn: 'Spectrometer sensor measuring stratospheric ozone recovery trends and global methane concentrations.'
         },
         {
             id: 9,
             nombre: 'Satélite 9',
+            nombreEn: 'Satellite 9',
             radioMult: 1.50,
             inclinacion: 0.20,     // ~11° (casi ecuatorial)
             ascension: 5.20,
@@ -179,15 +211,21 @@ document.addEventListener('DOMContentLoaded', () => {
             velocidadKm: '7.32 km/s',
             inclinacionGrad: '28.5°',
             periodo: '106.2 min',
-            estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Sistemas de navegación y sincronización',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            estado: 'Inactivo / Fuera de servicio',
+            estadoEn: 'Decommissioned / Inactive',
+            agencia: 'USAF / NASA',
+            agenciaEn: 'USAF / NASA',
+            lanzamiento: '14 de julio 1984',
+            lanzamientoEn: 'July 14, 1984',
+            proposito: 'Sistemas de radionavegación y sincronización.',
+            propositoEn: 'Radionavigation and atomic timing systems.',
+            descripcion: 'Unidad precursora en constelaciones de posicionamiento orbital equipada con osciladores atómicos de cesio.',
+            descripcionEn: 'Precursor constellation unit for orbital positioning equipped with high-precision cesium atomic clocks.'
         },
         {
             id: 10,
             nombre: 'Satélite 10',
+            nombreEn: 'Satellite 10',
             radioMult: 1.22,
             inclinacion: 0.85,     // ~49°
             ascension: 5.85,
@@ -198,10 +236,15 @@ document.addEventListener('DOMContentLoaded', () => {
             inclinacionGrad: '63.4°',
             periodo: '94.2 min',
             estado: 'En órbita activa',
-            agencia: 'NASA / Por definir',
-            lanzamiento: 'Por definir',
-            proposito: 'Experimentos científicos en microgravedad',
-            descripcion: 'Espacio asignado para la descripción técnica e información científica originada de la NASA correspondiente a este satélite.'
+            estadoEn: 'In active orbit',
+            agencia: 'NASA / DLR',
+            agenciaEn: 'NASA / DLR',
+            lanzamiento: '31 de julio 1992',
+            lanzamientoEn: 'July 31, 1992',
+            proposito: 'Investigación en microgravedad y física de materiales.',
+            propositoEn: 'Microgravity research and materials physics.',
+            descripcion: 'Laboratorio orbital para experimentos de cristalización de proteínas y solidificación de aleaciones en caída libre.',
+            descripcionEn: 'Orbital lab for protein crystal growth experiments and metallic alloy solidification in freefall.'
         }
     ];
 
@@ -379,23 +422,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // Iniciar loop de animación orbital
     requestAnimationFrame(animarOrbitas);
 
+    // Función para obtener el idioma actual del traductor global
+    function obtenerIdiomaActual() {
+        if (window.MetallicTraductor && typeof window.MetallicTraductor.obtenerIdioma === 'function') {
+            return window.MetallicTraductor.obtenerIdioma();
+        }
+        try {
+            return localStorage.getItem('metallic_earth_idioma') || 'es';
+        } catch (e) {
+            return 'es';
+        }
+    }
+
+    // Actualiza los nombres de los satélites en la lista lateral y en los hotspots 3D
+    function actualizarNombresSatelites() {
+        const esIngles = obtenerIdiomaActual() === 'en';
+
+        listaItems.forEach(item => {
+            const sat = SATELITES.find(s => s.id === item.id);
+            if (sat && item.link) {
+                item.link.textContent = esIngles && sat.nombreEn ? sat.nombreEn : sat.nombre;
+            }
+        });
+
+        satelitesElements.forEach(({ sat, element }) => {
+            const etiqueta = element.querySelector('.satelite-etiqueta');
+            if (etiqueta) {
+                etiqueta.textContent = esIngles && sat.nombreEn ? sat.nombreEn : sat.nombre;
+            }
+        });
+    }
+
     // 6. Gestión del panel lateral emergente y selección
     function seleccionarSatelite(id) {
         sateliteSeleccionadoId = id;
         const sat = SATELITES.find(s => s.id === id);
         if (!sat) return;
 
-        // Actualizar contenido del panel lateral
-        panelTitulo.textContent = sat.nombre;
-        panelEstado.textContent = sat.estado;
+        const esIngles = obtenerIdiomaActual() === 'en';
+
+        // Actualizar contenido del panel lateral respetando el idioma actual
+        panelTitulo.textContent = esIngles && sat.nombreEn ? sat.nombreEn : sat.nombre;
+        panelEstado.textContent = esIngles && sat.estadoEn ? sat.estadoEn : sat.estado;
         panelAltitud.textContent = sat.altitud;
         panelVelocidad.textContent = sat.velocidadKm;
         panelInclinacion.textContent = sat.inclinacionGrad;
         panelPeriodo.textContent = sat.periodo;
-        panelDescripcion.textContent = sat.descripcion;
-        panelAgencia.textContent = sat.agencia;
-        panelLanzamiento.textContent = sat.lanzamiento;
-        panelProposito.textContent = sat.proposito;
+        panelDescripcion.textContent = esIngles && sat.descripcionEn ? sat.descripcionEn : sat.descripcion;
+        panelAgencia.textContent = esIngles && sat.agenciaEn ? sat.agenciaEn : sat.agencia;
+        panelLanzamiento.textContent = esIngles && sat.lanzamientoEn ? sat.lanzamientoEn : sat.lanzamiento;
+        panelProposito.textContent = esIngles && sat.propositoEn ? sat.propositoEn : sat.proposito;
 
         // Mostrar panel lateral
         panelLateral.classList.add('abierto');
@@ -420,6 +496,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Inicializar los nombres según el idioma activo al cargar
+    actualizarNombresSatelites();
+
+    // Escuchar cambios de idioma globales disparados por el traductor
+    window.addEventListener('metallic_idioma_cambiado', () => {
+        actualizarNombresSatelites();
+        if (sateliteSeleccionadoId !== null) {
+            seleccionarSatelite(sateliteSeleccionadoId);
+        }
+    });
 
     function cerrarPanel() {
         sateliteSeleccionadoId = null;

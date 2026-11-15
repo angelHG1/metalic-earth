@@ -1,0 +1,295 @@
+/* ==========================================================================
+   Metallic Earth - Estilos Simples de Configuración (configuracion.css)
+   Diseño minimalista y limpio alineado con acercaDe.html
+   ========================================================================== */
+
+/* Recuadro único principal de configuración */
+.Configuracion {
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto 80px auto;
+    padding: 35px 40px;
+    border: 2px solid #FFFFFF;
+    border-radius: 12px;
+    background-color: rgba(7, 23, 63, 0.50);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-sizing: border-box;
+}
+
+.Configuracion h2 {
+    font-size: 26px;
+    margin: 0 0 10px 0;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.Configuracion .subtitulo-config {
+    margin: 0 0 25px 0;
+    font-size: 15px;
+    color: #c0d4ec;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    padding-bottom: 18px;
+    line-height: 1.5;
+}
+
+/* Lista de filas de opciones dentro del recuadro */
+.config-filas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.config-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.config-fila:last-of-type {
+    border-bottom: none;
+    padding-bottom: 5px;
+}
+
+.config-info {
+    flex: 1;
+}
+
+.config-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+
+.config-desc {
+    display: block;
+    font-size: 13px;
+    color: #a4bedf;
+    line-height: 1.4;
+}
+
+/* Botón de traducción simple */
+.btn-traducir-simple {
+    background-color: #0960E1;
+    color: #FFFFFF;
+    border: 1px solid #00f0ff;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.btn-traducir-simple:hover {
+    background-color: #0c73ff;
+}
+
+.btn-traducir-simple:active {
+    transform: scale(0.98);
+}
+
+/* Grupo selector de idioma */
+.grupo-idioma-simple {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-idioma-opcion {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-idioma-opcion:hover {
+    border-color: #00f0ff;
+}
+
+.btn-idioma-opcion.activo {
+    background-color: #0960E1;
+    border-color: #00f0ff;
+}
+
+/* Switch interruptor simple */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 26px;
+    transition: background-color 0.3s ease;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.switch input:checked + .slider {
+    background-color: #0960E1;
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(24px);
+    background-color: #00f0ff;
+}
+
+/* Selector desplegable simple */
+.select-simple {
+    background-color: #07173f;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    min-width: 190px;
+    transition: border-color 0.2s ease;
+}
+
+.select-simple:focus,
+.select-simple:hover {
+    border-color: #00f0ff;
+}
+
+.select-simple option {
+    background-color: #07173f;
+    color: #FFFFFF;
+}
+
+/* Barra inferior del recuadro para el botón de guardar */
+.config-pie {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-guardar-simple {
+    background-color: #0960E1;
+    color: #FFFFFF;
+    border: 1px solid #00f0ff;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-guardar-simple:hover {
+    background-color: #0d6efd;
+}
+
+.btn-restablecer-simple {
+    background-color: transparent;
+    color: #c0d4ec;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-restablecer-simple:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+/* Mensaje toast flotante simple sin emojis */
+.toast-simple {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #07173f;
+    color: #FFFFFF;
+    border: 1px solid #00f0ff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.toast-simple.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsivo */
+@media (max-width: 650px) {
+    .Configuracion {
+        width: 95%;
+        padding: 20px;
+        margin-top: 25px;
+    }
+
+    .config-fila {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .select-simple,
+    .btn-traducir-simple,
+    .grupo-idioma-simple {
+        width: 100%;
+    }
+
+    .config-pie {
+        flex-direction: column;
+    }
+
+    .btn-guardar-simple,
+    .btn-restablecer-simple {
+        width: 100%;
+        text-align: center;
+    }
+}
