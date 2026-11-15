@@ -582,3 +582,25 @@ model-viewer:active {
     padding: 20px;
     margin-top: 10px;
 }
+
+/* Pagina Ayuda*/
+.Funcionamiento
+{
+    width: 90%;
+    height: 30%;
+    border-bottom-width: 2px;
+    border-bottom-color: #FFFFFF; 
+    border-bottom-style:solid;
+    justify-content: center;
+    margin-left: 5%;
+    padding: 20px;
+    margin-top: 10px;
+}
+.Contacto
+{
+    width: 90%;
+    justify-content: center;
+    margin-left: 5%;
+    padding: 20px;
+    margin-top: 10px;
+}
